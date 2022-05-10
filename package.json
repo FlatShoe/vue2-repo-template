@@ -5,6 +5,9 @@
   "repository": "https://github.com/FlatShoe/vue2-repo-template.git",
   "author": "FlatShoes <flatshoes@163.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
   "devDependencies": {
     "css-loader": "^6.7.1",
     "node-sass": "^7.0.1",
