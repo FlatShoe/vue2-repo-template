@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const EsLintWebpackPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -92,6 +93,7 @@ module.exports = {
       template: 'public/index.html'
     }),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new EsLintWebpackPlugin()
   ]
 }
