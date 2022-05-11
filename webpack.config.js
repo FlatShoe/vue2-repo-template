@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
@@ -77,6 +77,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
+      },
+      {
+        test: /\.m?jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        }
       }
     ]
   },
