@@ -7,8 +7,8 @@ const {devServer, getLocalHosts} = require('../configs/server')
 
 module.exports = merge(base(), {
   mode: 'development',
-  entry: './src/main.js',
   stats: 'errors-only',
+  devtool: 'eval-cheap-module-source-map',
   devServer,
   plugins: [
     new EsLintWebpackPlugin(),
