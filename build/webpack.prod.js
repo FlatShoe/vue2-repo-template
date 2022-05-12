@@ -2,6 +2,7 @@ const base = require('./webpack.base')
 const {merge} = require('webpack-merge')
 const {ProgressPlugin} = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = merge(base('production'), {
   mode: 'production',
@@ -62,6 +63,9 @@ module.exports = merge(base('production'), {
     ]
   },
   plugins: [
-    new ProgressPlugin()
+    new ProgressPlugin(),
+    new CompressionPlugin({
+      test: /\.(css|js)$/
+    })
   ]
 })
