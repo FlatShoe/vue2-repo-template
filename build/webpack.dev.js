@@ -5,7 +5,7 @@ const EsLintWebpackPlugin = require('eslint-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const {devServer, getLocalHosts} = require('../configs/server')
 
-module.exports = merge(base, {
+module.exports = merge(base(), {
   mode: 'development',
   entry: './src/main.js',
   stats: 'errors-only',

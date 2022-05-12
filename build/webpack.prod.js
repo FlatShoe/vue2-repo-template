@@ -3,7 +3,7 @@ const {merge} = require('webpack-merge')
 const {ProgressPlugin} = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 
-module.exports = merge(base, {
+module.exports = merge(base('production'), {
   mode: 'production',
   optimization: {
     realContentHash: false,
