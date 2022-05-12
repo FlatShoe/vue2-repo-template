@@ -1,4 +1,4 @@
-'use strcit'
+// 'use strcit'
 const chalk = require('chalk')
 const webpack = require('webpack')
 const webpackConfig = require('./build/webpack.prod')
@@ -9,7 +9,6 @@ try {
       console.log(chalk.red(`${error.message}`))
       process.exit(1)
     }
-    console.info(stats)
     console.info(chalk.green('Build completed successfully.\n'))
   })
 } catch (error) {
