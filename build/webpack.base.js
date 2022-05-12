@@ -4,11 +4,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+const resolve = (dir) => {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   entry: './src/main.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, '../', 'dist')
+    filename: 'js/bundle[name][contenthash].js',
+    chunkFilename: 'js/chunk[name][contenthash].js',
+    path: resolve('dist'),
   },
   module: {
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
