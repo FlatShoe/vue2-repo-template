@@ -114,6 +114,13 @@ module.exports = (env = 'development') => {
         filename: 'css/[name][contenthash:6].css',
         chunkFilename: 'css/[id][contenthash:6].css'
       })
-    ]
+    ],
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': resolve('src')
+      },
+      extensions: ['.js', '.vue', '.json']
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="error-404">
-    <img src="../../assets/images/404.jpg" />
+    <img src="@/assets/images/404.jpg" />
   </div>
 </template>
 <script>
