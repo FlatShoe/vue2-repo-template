@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    
-    <button @click="test">按钮</button>
+    <el-button type="primary">主要按钮</el-button>
   </div>
 </template>
 <script>
