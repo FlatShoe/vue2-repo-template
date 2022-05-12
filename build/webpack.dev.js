@@ -1,4 +1,5 @@
 const base = require('./webpack.base')
+const webpack = require('webpack')
 const {merge} = require('webpack-merge')
 const EsLintWebpackPlugin = require('eslint-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
@@ -20,6 +21,7 @@ module.exports = merge(base, {
         ],
         notes: ['Start your writing journey']
       }
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 })
