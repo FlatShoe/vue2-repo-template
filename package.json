@@ -6,7 +6,7 @@
   "author": "FlatShoes <flatshoes@163.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --progress --config build/webpack.prod.js",
+    "build": "node build.js",
     "serve": "webpack serve --progress --config build/webpack.dev.js"
   },
   "devDependencies": {
@@ -16,6 +16,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.17.10",
     "babel-loader": "^8.2.5",
+    "chalk": "4.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.15.0",
