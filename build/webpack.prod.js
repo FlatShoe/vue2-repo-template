@@ -64,6 +64,10 @@ module.exports = merge(base('production'), {
   },
   plugins: [
     new ProgressPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name][contenthash:6].css',
+      chunkFilename: 'css/[id][contenthash:6].css'
+    }),
     new CompressionPlugin({
       test: /\.(css|js)$/
     })

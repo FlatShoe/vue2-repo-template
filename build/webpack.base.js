@@ -109,11 +109,7 @@ module.exports = (env = 'development') => {
         template: 'public/index.html'
       }),
       new CleanWebpackPlugin(),
-      new VueLoaderPlugin(),
-      new MiniCssExtractPlugin({
-        filename: 'css/[name][contenthash:6].css',
-        chunkFilename: 'css/[id][contenthash:6].css'
-      })
+      new VueLoaderPlugin()
     ],
     resolve: {
       alias: {
