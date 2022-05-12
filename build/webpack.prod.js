@@ -3,6 +3,7 @@ const {merge} = require('webpack-merge')
 const {ProgressPlugin} = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = merge(base('production'), {
   mode: 'production',
