@@ -3,18 +3,12 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const EsLintWebpackPlugin = require('eslint-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const devServer = require('./configs/server')
 
 module.exports = {
-  mode: 'development',
   entry: './src/main.js',
-  stats: 'errors-only',
-  devServer,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../', 'dist')
   },
   module: {
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
@@ -97,17 +91,6 @@ module.exports = {
       template: 'public/index.html'
     }),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin(),
-    new EsLintWebpackPlugin(),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: [
-          `Local:     http://localhost:${devServer.port}`,
-          `Network:   http://${devServer.host}:${devServer.port}`
-        ],
-        notes: ["What's next is yours"]
-      },
-      clearConsole: true
-    })
+    new VueLoaderPlugin()
   ]
 }

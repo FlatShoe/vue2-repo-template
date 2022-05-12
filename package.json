@@ -6,8 +6,8 @@
   "author": "FlatShoes <flatshoes@163.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "serve": "webpack serve --progress"
+    "build": "webpack --progress --config build/webpack.prod.js",
+    "serve": "webpack serve --progress --config build/webpack.dev.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
@@ -36,7 +36,8 @@
     "vue-loader": "^15.9.8",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0"
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "vue": "2.6.14",
