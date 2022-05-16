@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 const UseDataTable = () => import('@/views/components-use-show/UseDataTable.vue')
+const UseBreadcrumb = () => import('@/views/components-use-show/UseBreadcrumb.vue')
 
 Vue.use(VueRouter)
 const routes = [
@@ -14,8 +15,12 @@ const routes = [
     component: () => import('@/views/errors/404')
   },
   {
-    path: '/components-use-show',
+    path: '/components-use-data-table',
     component: UseDataTable
+  },
+  {
+    path: '/components-use-breadcrumb',
+    component: UseBreadcrumb
   }
 ]
 
