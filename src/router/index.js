@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 const UseDataTable = () => import('@/views/components-use-show/UseDataTable.vue')
 const UseBreadcrumb = () => import('@/views/components-use-show/UseBreadcrumb.vue')
+const UseFormDialog = () => import('@/views/components-use-show/UseFormDialog.vue')
 
 Vue.use(VueRouter)
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
   {
     path: '/components-use-breadcrumb',
     component: UseBreadcrumb
+  },
+  {
+    path: '/components-use-form-dialog',
+    component: UseFormDialog
   }
 ]
 

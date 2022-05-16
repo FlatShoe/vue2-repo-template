@@ -5,7 +5,8 @@ import {
   TableColumn,
   Pagination,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  Dialog
 } from 'element-ui'
 
 Vue.use(Button)
@@ -14,3 +15,4 @@ Vue.use(TableColumn)
 Vue.use(Pagination)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+Vue.use(Dialog)
