@@ -7,7 +7,11 @@
     <page-card :scrollable="false">
       <left-right-page useSplitBlock>
         <template slot="left-page">
-          123
+          <div class="left-page-container page" v-bar>
+            <div>
+              <p v-for="item in 1000">{{item}}</p>
+            </div>
+          </div>
         </template>
         <template slot="right-page">
           213

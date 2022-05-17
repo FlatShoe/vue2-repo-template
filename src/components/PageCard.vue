@@ -73,6 +73,7 @@ export default {
     background-color: #FBF9FC;
     box-sizing: border-box;
     margin: 0px 10px 10px 10px;
+    overflow: hidden;
     &.margin-top {
       margin-top: 10px;
     }

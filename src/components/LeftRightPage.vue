@@ -182,15 +182,18 @@ export default {
         flex: 1;
         display: flex;
         width: 100%;
+        overflow: hidden;
         .page-inner-left,
         .page-inner-right {
-          boxx-sizing: border-box;
+          height: 100%;
+          box-sizing: border-box;
           background-color: #fff;
           overflow: hidden;
         }
         .page-inner-split {
           height: 100%;
           box-sizing: border-box;
+          overflow: hidden;
         }
         .page-inner-right {
           display: flex;
