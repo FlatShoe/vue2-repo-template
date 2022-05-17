@@ -65,7 +65,6 @@
           :total="total"
           :pageSize="pageSize"
           :currentPage="currentPage"
-          :isDirectUse="false"
           @page-size-change="$emit('page-size-change', $event)"
           @page-change="$emit('page-change', $event)"
         />

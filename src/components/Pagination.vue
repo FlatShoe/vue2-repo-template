@@ -3,7 +3,10 @@
 * @Date 2022-05-16
 -->
 <template>
-  <div class="pagination-wrapper">
+  <div
+    class="pagination-wrapper"
+    :style="{padding: padding}"
+  >
     <el-pagination
       :background="paginationBackground"
       :layout="layout"
@@ -46,6 +49,10 @@ export default {
     total: {
       type: Number,
       default: 0
+    },
+    padding: {
+      type: String,
+      default: '10px 5px'
     }
   },
   methods: {
@@ -61,6 +68,5 @@ export default {
 <style lang="scss" scoped>
   .pagination-wrapper {
     box-sizing: border-box;
-    padding: 5px 10px;
   }
 </style>

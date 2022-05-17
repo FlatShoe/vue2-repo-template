@@ -1,6 +1,6 @@
 <template>
   <div class="use-left-right-page page" style="background-color: pink;">
-    <left-right-page useSplitBlock>
+    <left-right-page useSplitBlock showRightPageFooter>
       <template slot="left-page">左侧</template>
       <template slot="right-page">右侧</template>
     </left-right-page>

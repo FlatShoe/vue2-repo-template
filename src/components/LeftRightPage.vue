@@ -37,8 +37,22 @@
             padding: rightPadding
           }"
         >
-          <slot name="right-page"></slot>
-          
+          <div class="right-page-inner">
+            <slot name="right-page"></slot>
+          </div>
+          <div class="right-page-footer" v-if="showRightPageFooter">
+            <pagination
+              :padding="paginationPadding"
+              :paginationBackground="paginationBackground"
+              :layout="layout"
+              :page-sizes="pageSizes"
+              :total="total"
+              :page-size="pageSize"
+              :current-page="currentPage"
+              @page-size-change="$emit('page-size-change', $event)"
+              @page-change="$emit('page-change', $event)"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -53,6 +67,7 @@
 </template>
 
 <script>
+import Pagination from './Pagination'
 export default {
   name: 'LeftRightPage',
   props: {
@@ -104,6 +119,10 @@ export default {
       type: String,
       default: '24px'
     },
+    showRightPageFooter: {
+      type: Boolean,
+      default: false
+    },
     showFooter: {
       type: Boolean,
       default: false
@@ -111,7 +130,40 @@ export default {
     footerPadding: {
       type: String,
       default: '10px'
+    },
+    paginationPadding: {
+      type: String,
+      default: '10px 0 0 0'
+    },
+    paginationBackground: {
+      type: Boolean,
+      default: true
+    },
+    layout: {
+      type: String,
+      default: 'sizes, prev, pager, next, total'
+    },
+    pageSizes: {
+      type: Array,
+      default() {
+        return [20, 50, 100, 200]
+      }
+    },
+    pageSize: {
+      type: Number,
+      default: 20
+    },
+    currentPage: {
+      type: Number,
+      default: 1
+    },
+    total: {
+      type: Number,
+      default: 0
     }
+  },
+  components: {
+    Pagination
   }
 }
 </script>
@@ -139,6 +191,19 @@ export default {
         .page-inner-split {
           height: 100%;
           box-sizing: border-box;
+        }
+        .page-inner-right {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          .right-page-inner {
+            flex: 1;
+            overflow: hidden;
+          }
+          .right-page-footer {
+            display: flex;
+            justify-content: flex-end;
+          }
         }
       }
     }
