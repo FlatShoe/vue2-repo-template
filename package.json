@@ -50,6 +50,7 @@
     "vue": "2.6.14",
     "vue-router": "^3.5.1",
     "vue-template-compiler": "2.6.14",
+    "vuebar": "^0.0.20",
     "vuex": "3.6.2"
   }
 }
