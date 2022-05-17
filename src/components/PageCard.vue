@@ -3,7 +3,13 @@
 * @Date 2022-05-16
 -->
 <template>
-  <div class="page-card">
+  <div
+    class="page-card-wrapper"
+    :class="{
+      'always-shadow': shadow,
+      'always-border': border
+    }"
+  >
     <div class="page-card-header">
       <slot name="header" />
     </div>
@@ -27,6 +33,14 @@ export default {
     scrollable: {
       type: Boolean,
       default: true
+    },
+    shadow: {
+      type: Boolean,
+      default: true
+    },
+    border: {
+      type: Boolean,
+      default: true
     }
   },
   components: {
@@ -36,17 +50,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .page-card {
+  .page-card-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box;
     .page-card-inner {
       flex: 1;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+    }
+    &.always-shadow {
+      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    }
+    &.always-border {
+      border: 1px solid #ebeef5;
     }
   }
 </style>
