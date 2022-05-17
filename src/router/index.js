@@ -6,6 +6,7 @@ const UseBreadcrumb = () => import('@/views/components-use-show/UseBreadcrumb.vu
 const UseFormDialog = () => import('@/views/components-use-show/UseFormDialog.vue')
 const UseLeftRightPage = () => import('@/views/components-use-show/UseLeftRightPage.vue')
 const UseScrollView = () => import('@/views/components-use-show/UseScrollView.vue')
+const UsePageCard = () => import('@/views/components-use-show/UsePageCard.vue')
 
 Vue.use(VueRouter)
 const routes = [
@@ -36,6 +37,10 @@ const routes = [
   {
     path: '/components-use-scroll-view',
     component: UseScrollView
+  },
+  {
+    path: '/components-use-page-card',
+    component: UsePageCard
   }
 ]
 
