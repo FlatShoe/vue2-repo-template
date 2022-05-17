@@ -117,7 +117,7 @@ export default {
     },
     splitBlockWidth: {
       type: String,
-      default: '24px'
+      default: '18px'
     },
     showRightPageFooter: {
       type: Boolean,

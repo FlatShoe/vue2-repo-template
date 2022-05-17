@@ -7,7 +7,10 @@
     class="page-card-wrapper"
     :class="{
       'always-shadow': shadow,
-      'always-border': border
+      'always-border': border,
+      'clear-margin': clearMargin,
+      'margin-top': marginTop,
+      'margin-bottom': marginBottom
     }"
   >
     <div class="page-card-header">
@@ -41,6 +44,18 @@ export default {
     border: {
       type: Boolean,
       default: true
+    },
+    marginTop: {
+      type: Boolean,
+      default: true
+    },
+    marginBottom: {
+      type: Boolean,
+      default: true
+    },
+    clearMargin: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -51,13 +66,23 @@ export default {
 
 <style lang="scss" scoped>
   .page-card-wrapper {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #FBF9FC;
     box-sizing: border-box;
+    margin: 0px 10px 10px 10px;
+    &.margin-top {
+      margin-top: 10px;
+    }
+    &.margin-bottom {
+      margin-bottom: 10px;
+    }
+    &.clear-margin {
+      margin: 0;
+      width: 100%;
+    }
     .page-card-inner {
       flex: 1;
       display: flex;
