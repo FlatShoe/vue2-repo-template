@@ -1,5 +1,5 @@
 <!-- 
-* @Description 分页组建
+* @Description 分页组件
 * @Date 2022-05-16
 -->
 <template>
