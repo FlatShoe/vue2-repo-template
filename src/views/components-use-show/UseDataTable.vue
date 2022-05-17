@@ -4,6 +4,7 @@
       showBottomBar
       :columns="columns"
       :data="list"
+      :total="100"
       stripe
       highlightCurrentRow
       @page-size-change="pageSizeChange"

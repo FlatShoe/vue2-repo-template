@@ -13,8 +13,6 @@
       :current-page="currentPage"
       @size-change="sizeChange"
       @current-change="currentChange"
-      @prev-click="prevClick"
-      @next-click="nextClick"
     ></el-pagination>
   </div>
 </template>
@@ -48,10 +46,6 @@ export default {
     total: {
       type: Number,
       default: 0
-    },
-    isDirectUse: {
-      type: Boolean,
-      default: true
     }
   },
   methods: {
@@ -59,26 +53,8 @@ export default {
       this.$emit('page-size-change', size)
     },
     currentChange(current) {
-      if (this.isDirectUse) {
-        this.$emit('page-change', current)
-      } else {
-        this.$emit('current-change', current)
-      }
+      this.$emit('page-change', current)
     },
-    prevClick(current) {
-      if (this.isDirectUse) {
-        this.$emit('page-change', current)
-      } else {
-        this.$emit('prev-click', current)
-      }
-    },
-    nextClick(current) {
-      if (this.isDirectUse) {
-        this.$emit('page-change', current)
-      } else {
-        this.$emit('next-click', current)
-      }
-    }
   }
 }
 </script>

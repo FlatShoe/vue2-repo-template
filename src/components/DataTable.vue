@@ -58,24 +58,24 @@
         <slot name="bottom-left-bar"></slot>
       </div> 
       <div class="bottom-bar-right">
-        <el-pagination
-          :background="paginationBackground"
+        <pagination
+          :paginationBackground="paginationBackground"
           :layout="layout"
-          :page-sizes="pageSizes"
+          :pageSizes="pageSizes"
           :total="total"
-          :page-size="pageSize"
-          :current-page="currentPage"
-          @size-change="$emit('page-size-change', $event)"
-          @current-change="$emit('page-change', $event)"
-          @prev-click="$emit('page-change', $event)"
-          @next-click="$emit('page-change', $event)"
-        ></el-pagination>
+          :pageSize="pageSize"
+          :currentPage="currentPage"
+          :isDirectUse="false"
+          @page-size-change="$emit('page-size-change', $event)"
+          @page-change="$emit('page-change', $event)"
+        />
       </div> 
     </div>
   </div>
 </template>
 <script>
 import dayJs from 'dayjs'
+import Pagination from './Pagination'
 export default {
   name: 'DataTable',
   props: {
@@ -157,6 +157,9 @@ export default {
       type: Number,
       default: 0
     }
+  },
+  components: {
+    Pagination
   },
   methods: {
     strftime(row, column, cellValue, index) {
