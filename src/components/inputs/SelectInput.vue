@@ -3,19 +3,17 @@
 * @Date 2022-05-23
 -->
 <template>
-  <div class="select-input">
-    <el-form-item :label="label">
-      <el-select v-model="selected" @change="$emit('input', $event)">
-        <el-option
-          v-for="item in collection"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-form-item>
-  </div>
+  <el-form-item class="select-input" :label="label">
+    <el-select v-model="selected" @change="$emit('input', $event)">
+      <el-option
+        v-for="item in collection"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      >
+      </el-option>
+    </el-select>
+  </el-form-item>
 </template>
 
 <script>

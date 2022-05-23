@@ -3,20 +3,18 @@
 * @Date 2022-05-23
 -->
 <template>
-  <div class="date-range-input">
-    <el-form-item :label="label" :prop="name" :required="required">
-      <el-date-picker
-        type="daterange"
-        :editable="false"
-        :start-placeholder="startPlaceholder"
-        :end-placeholder="endPlaceholder"
-        :disabled="disabled"
-        :readonly="readonly"
-        v-model="selected"
-        @change="$emit('input', $event)"
-      ></el-date-picker>
-    </el-form-item>
-  </div>
+  <el-form-item class="date-range-input" :label="label" :prop="name" :required="required">
+    <el-date-picker
+      type="daterange"
+      :editable="false"
+      :start-placeholder="startPlaceholder"
+      :end-placeholder="endPlaceholder"
+      :disabled="disabled"
+      :readonly="readonly"
+      v-model="selected"
+      @change="$emit('input', $event)"
+    ></el-date-picker>
+  </el-form-item>
 </template>
 
 <script>

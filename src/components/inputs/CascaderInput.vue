@@ -3,20 +3,18 @@
 * @Date 2022-05-23
 -->
 <template>
-  <div class="cascader-input">
-    <el-form-item :label="label" :prop="name" :required="required">
-      <el-cascader
-        clearable
-        :options="collection"
-        :props="props"
-        :placeholder="placeholder"
-        :disabled="disabled || readonly"
-        v-model="selectedItems"
-        @expand-change="handleItemChange"
-        @change="handleChange"
-      ></el-cascader>
-    </el-form-item>
-  </div>
+  <el-form-item class="cascader-input" :label="label" :prop="name" :required="required">
+    <el-cascader
+      clearable
+      :options="collection"
+      :props="props"
+      :placeholder="placeholder"
+      :disabled="disabled || readonly"
+      v-model="selectedItems"
+      @expand-change="handleItemChange"
+      @change="handleChange"
+    ></el-cascader>
+  </el-form-item>
 </template>
 
 <script>

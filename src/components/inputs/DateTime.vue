@@ -3,20 +3,18 @@
 * @Date 2022-05-23
 -->
 <template>
-  <div class="date-time">
-    <el-form-item :label="label" :prop="prop" :required="required">
-      <el-date-picker
-        type="datetime"
-        :editable="false"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        :readonly="readonly"
-        v-model="selected"
-        default-time="23:59:59"
-        @change="$emit('input', $event)"
-      ></el-date-picker>
-    </el-form-item>
-  </div>
+  <el-form-item class="date-time" :label="label" :prop="prop" :required="required">
+    <el-date-picker
+      type="datetime"
+      :editable="false"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :readonly="readonly"
+      v-model="selected"
+      default-time="23:59:59"
+      @change="$emit('input', $event)"
+    ></el-date-picker>
+  </el-form-item>
 </template>
 
 <script>

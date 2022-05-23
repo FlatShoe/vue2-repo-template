@@ -3,15 +3,13 @@
 * @Date 2022-05-23
 -->
 <template>
-  <div class="radio-input">
-    <el-form-item :label="label" :prop="name" :required="required">
-      <el-radio-group v-model="selected" @change="$emit('input', $event)">
-        <el-radio v-for="item in collection" :label="item.value" :key="item.value">
-          {{ item.label }}
-        </el-radio>
-      </el-radio-group>
-    </el-form-item>
-  </div>
+  <el-form-item class="radio-input" :label="label" :prop="name" :required="required">
+    <el-radio-group v-model="selected" @change="$emit('input', $event)">
+      <el-radio v-for="item in collection" :label="item.value" :key="item.value">
+        {{ item.label }}
+      </el-radio>
+    </el-radio-group>
+  </el-form-item>
 </template>
 
 <script>

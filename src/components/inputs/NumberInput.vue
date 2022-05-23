@@ -3,20 +3,18 @@
 * @Date 2022-05-23
 -->
 <template>
-  <div class="number-input">
-    <el-form-item :label="label" :prop="name" :required="required">
-      <el-input
-        type="number"
-        v-model="stingValue"
-        :value="value"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        :readonly="readonly"
-        @change="$emit('input', $event)"
-      >
-      </el-input>
-    </el-form-item>
-  </div>
+  <el-form-item class="number-input" :label="label" :prop="name" :required="required">
+    <el-input
+      type="number"
+      v-model="stingValue"
+      :value="value"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :readonly="readonly"
+      @change="$emit('input', $event)"
+    >
+    </el-input>
+  </el-form-item>
 </template>
 
 <script>
