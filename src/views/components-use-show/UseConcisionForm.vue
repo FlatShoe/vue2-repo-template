@@ -26,19 +26,6 @@
 </template>
 
 <script>
-import SwitchInput from '@/components/inputs/SwitchInput.vue'
-import CascaderInput from '@/components/inputs/CascaderInput.vue'
-import DateInput from '@/components/inputs/DateInput.vue'
-import DateRangeInput from '@/components/inputs/DateRangeInput.vue'
-import DateTime from '@/components/inputs/DateTime.vue'
-import NumberInput from '@/components/inputs/NumberInput.vue'
-import PasswordInput from '@/components/inputs/PasswordInput.vue'
-import RadioInput from '@/components/inputs/RadioInput.vue'
-import SelectInput from '@/components/inputs/SelectInput.vue'
-import TextInput from '@/components/inputs/TextInput.vue'
-import TextareaInput from '@/components/inputs/TextareaInput.vue'
-import TimeInput from '@/components/inputs/TimeInput.vue'
-
 const cascaderCollection = [
   {
     value: 'zhinan',
@@ -338,20 +325,6 @@ const selectCollection = [
 
 export default {
   name: 'UseConcisionForm',
-  components: {
-    SwitchInput,
-    CascaderInput,
-    DateInput,
-    DateRangeInput,
-    DateTime,
-    NumberInput,
-    PasswordInput,
-    RadioInput,
-    SelectInput,
-    TextInput,
-    TextareaInput,
-    TimeInput
-  },
   data() {
     return {
       form: {},
