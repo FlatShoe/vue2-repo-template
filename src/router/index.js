@@ -7,7 +7,7 @@ const UseFormDialog = () => import('@/views/components-use-show/UseFormDialog.vu
 const UseLeftRightPage = () => import('@/views/components-use-show/UseLeftRightPage.vue')
 const UseScrollView = () => import('@/views/components-use-show/UseScrollView.vue')
 const UsePageCard = () => import('@/views/components-use-show/UsePageCard.vue')
-
+const UseConcisionForm = () => import('@/views/components-use-show/UseConcisionForm.vue')
 Vue.use(VueRouter)
 const routes = [
   {
@@ -41,6 +41,10 @@ const routes = [
   {
     path: '/components-use-page-card',
     component: UsePageCard
+  },
+  {
+    path: '/components-use-concision-form',
+    component: UseConcisionForm
   }
 ]
 
