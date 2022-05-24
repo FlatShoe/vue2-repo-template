@@ -20,6 +20,9 @@ import {
   RadioGroup,
   Radio,
   RadioButton,
+  CheckboxGroup,
+  Checkbox,
+  CheckboxButton,
   Select,
   Option
 } from 'element-ui'
@@ -44,5 +47,8 @@ Vue.use(TimeSelect)
 Vue.use(RadioGroup)
 Vue.use(Radio)
 Vue.use(RadioButton)
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+Vue.use(CheckboxButton)
 Vue.use(Select)
 Vue.use(Option)

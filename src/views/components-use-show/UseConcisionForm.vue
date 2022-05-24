@@ -317,6 +317,7 @@ const selectCollection = [
     label: '选择器3'
   }
 ]
+const checkboxCollection = ['爱好1', '爱好2', '爱好3']
 
 const formRules = {
   keyParameterIndex: {required: true, message: '请输入参数索引', trigger: 'blur'}
@@ -330,6 +331,14 @@ const formSchema = [
     collection: cascaderCollection,
     propsOptions: {label: 'label'},
     value: ['zhinan', 'shejiyuanze', 'yizhi']
+  },
+  {
+    name: 'hobby',
+    label: '爱好',
+    inputType: 'checkbox',
+    collection: checkboxCollection,
+    propsOptions: null,
+    button: true
   },
   {
     fieldset: true,
