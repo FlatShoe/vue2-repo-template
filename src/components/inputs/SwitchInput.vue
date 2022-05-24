@@ -6,6 +6,7 @@
   <el-form-item class="switch-input" :label="label" :prop="name" :required="required">
     <el-switch
       :name="name"
+      :width="width"
       v-model="checked"
       :disabled="disabled || readonly"
       :active-value="1"
@@ -19,8 +20,14 @@
 <script>
 import inputMixin from '@/mixins/input-mixin'
 export default {
-  name: '',
+  name: 'SwitchInput',
   mixins: [inputMixin],
+  props: {
+    width: {
+      type: Number,
+      default: 40
+    }
+  },
   data() {
     return {
       checked: this.value

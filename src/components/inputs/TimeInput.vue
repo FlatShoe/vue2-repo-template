@@ -5,7 +5,7 @@
 <template>
   <el-form-item class="time-input" :label="label" :prop="name" :required="required">
     <el-time-select
-      :editable="false"
+      :editable="editable"
       :placeholder="placeholder"
       :disabled="disabled"
       :picker-options="{
@@ -26,6 +26,12 @@ import inputMixin from '@/mixins/input-mixin'
 export default {
   name: 'TimeInput',
   mixins: [inputMixin],
+  props: {
+    editable: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       selected: this.value

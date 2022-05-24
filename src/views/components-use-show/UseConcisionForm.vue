@@ -4,28 +4,18 @@
 -->
 <template>
   <div class="use-concision-form">
-    <el-form :model="form">
-      <switch-input label="开关" placeholder="开启开关" value="123" />
-      <cascader-input
-        label="级联选择器"
-        placeholder="请选择"
-        :collection="cascaderCollection"
-        :propsOptions="{label: 'label'}"
-      ></cascader-input>
-      <date-input label="时间选择器" placeholder="选择时间" />
-      <date-range-input label="时间范围选择器" placeholder="选择时间范围" />
-      <number-input label="数字框" placeholder="输入数字" />
-      <password-input label="密码框" placeholder="输入密码" />
-      <radio-input label="单选框" placeholder="请选择" :collection="radiosCollection" />
-      <select-input label="下拉框" placeholder="请选择" :collection="selectCollection" />
-      <text-input label="文本框" placeholder="请输入文字" />
-      <textarea-input label="文本域" placeholder="请输入文字" />
-      <time-input label="时间选择" placeholder="请选择时间" />
-    </el-form>
+    <concision-form ref="concisionFormRef" :formSchema="formSchema" :formRules="formRules">
+      <template slot="hiddenDangereType">
+        <span>123</span>
+      </template>
+    </concision-form>
+    <el-button @click="handlerSubmit">提交</el-button>
+    <el-button @click="handelReset">清除</el-button>
   </div>
 </template>
 
 <script>
+import ConcisionForm from '@/components/ConcisionForm.vue'
 const cascaderCollection = [
   {
     value: 'zhinan',
@@ -323,17 +313,71 @@ const selectCollection = [
   }
 ]
 
+const formRules = {
+  keyParameterIndex: {required: true, message: '请输入参数索引'}
+}
+
+const formSchema = [
+  {
+    fieldset: true,
+    inputs: [
+      {name: 'keyParameterIndex', label: '指标', inputType: 'text'},
+      {name: 'controlMeasures', label: '施', inputType: 'text'},
+      {name: 'classification', label: '分类', inputType: 'text'},
+      {name: 'memo', label: '备注', inputType: 'textarea'}
+    ]
+  },
+  {
+    fieldset: true,
+    inputs: [
+      {name: 'controlProfession', label: '专业', inputType: 'text'},
+      {name: 'nationalStandard', label: '标记', inputType: 'text'},
+      {
+        name: 'controlMeans',
+        label: '手段',
+        inputType: 'select',
+        collection: [
+          {label: '拍照', value: '拍照'},
+          {label: '热成像', value: '热成像'},
+          {label: '振动', value: '振动'},
+          {label: '摄像', value: '摄像'}
+        ]
+      }
+    ]
+  }
+]
+
 export default {
   name: 'UseConcisionForm',
+  components: {
+    ConcisionForm
+  },
   data() {
     return {
       form: {},
+      formSchema,
+      formRules,
       cascaderCollection,
       radiosCollection,
-      selectCollection
+      selectCollection,
+      labelPosition: 'right',
+      formLabelAlign: {}
+    }
+  },
+  methods: {
+    handlerSubmit() {
+      this.$refs.concisionFormRef.submitForm()
+    },
+    handelReset() {
+      this.$refs.concisionFormRef.resetForm()
     }
   }
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.use-concision-form {
+  height: 100%;
+  overflow-y: auto;
+}
+</style>

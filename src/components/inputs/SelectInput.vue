@@ -3,8 +3,8 @@
 * @Date 2022-05-23
 -->
 <template>
-  <el-form-item class="select-input" :label="label">
-    <el-select v-model="selected" @change="$emit('input', $event)">
+  <el-form-item class="select-input" :label="label" :prop="name" :required="required">
+    <el-select clearable v-model="selected" @change="$emit('input', $event)">
       <el-option
         v-for="item in collection"
         :key="item.value"

@@ -9,7 +9,7 @@
       :options="collection"
       :props="props"
       :placeholder="placeholder"
-      :disabled="disabled || readonly"
+      :disabled="disabled"
       v-model="selectedItems"
       @expand-change="handleItemChange"
       @change="handleChange"
