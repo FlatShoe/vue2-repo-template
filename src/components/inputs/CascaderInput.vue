@@ -6,7 +6,7 @@
   <el-form-item class="cascader-input" :label="label" :prop="name" :required="required">
     <el-cascader
       clearable
-      :options="collection"
+      :options="options"
       :props="props"
       :placeholder="placeholder"
       :disabled="disabled"
@@ -19,6 +19,7 @@
 
 <script>
 import inputMixin from '@/mixins/input-mixin'
+import cloneDeep from 'lodash/cloneDeep'
 export default {
   name: 'CascaderInput',
   mixins: [inputMixin],
@@ -28,6 +29,10 @@ export default {
       default() {
         return []
       }
+    },
+    collectionName: {
+      type: String,
+      default: ''
     },
     propsOptions: {
       type: Object,
@@ -47,6 +52,7 @@ export default {
         children: 'children',
         disabled: 'disabled'
       },
+      options: [],
       selectedItems: []
     }
   },
@@ -54,17 +60,47 @@ export default {
     handleItemChange() {
       this.$emit('input', this.selectedItems)
     },
-    handleChange() {
+    handleChange(item) {
       this.$emit('input', this.selectedItems)
     }
   },
   watch: {
+    collection: {
+      handler(value) {
+        if (this.collectionName) return
+        this.options = value
+      },
+      immediate: true
+    },
+    collectionName: {
+      handler(value) {
+        if (!value) return
+        const [model, key] = value.split('/')
+        try {
+          if (key) {
+            this.options = this.$store.state[model][key]
+          } else {
+            this.options = this.$store.state[model]
+          }
+        } catch (err) {
+          this.options = []
+        }
+      },
+      immediate: true
+    },
     propsOptions: {
       handler(value) {
         this.props = {
           ...this.props,
           ...value
         }
+      },
+      immediate: true
+    },
+    value: {
+      handler(value) {
+        if (!value) return (this.selectedItems = [])
+        this.selectedItems = cloneDeep(value)
       },
       immediate: true
     }

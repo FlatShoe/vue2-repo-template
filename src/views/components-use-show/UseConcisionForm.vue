@@ -319,6 +319,14 @@ const formRules = {
 
 const formSchema = [
   {
+    name: 'detail',
+    label: '情况',
+    inputType: 'cascader',
+    collection: cascaderCollection,
+    propsOptions: {label: 'label'},
+    value: ['zhinan', 'shejiyuanze', 'yizhi']
+  },
+  {
     fieldset: true,
     inputs: [
       {name: 'keyParameterIndex', label: '指标', inputType: 'text'},
@@ -341,7 +349,8 @@ const formSchema = [
           {label: '热成像', value: '热成像'},
           {label: '振动', value: '振动'},
           {label: '摄像', value: '摄像'}
-        ]
+        ],
+        value: '拍照'
       }
     ]
   }
