@@ -291,16 +291,16 @@ const cascaderCollection = [
 ]
 const radiosCollection = [
   {
-    value: '1',
-    label: '单选框1'
+    id: '1',
+    name: '单选框1'
   },
   {
-    value: '2',
-    label: '单选框2'
+    id: '2',
+    name: '单选框2'
   },
   {
-    value: '3',
-    label: '单选框3'
+    id: '3',
+    name: '单选框3'
   }
 ]
 const selectCollection = [
@@ -317,7 +317,6 @@ const selectCollection = [
     label: '选择器3'
   }
 ]
-const checkboxCollection = ['爱好1', '爱好2', '爱好3']
 
 const formRules = {
   keyParameterIndex: {required: true, message: '请输入参数索引', trigger: 'blur'}
@@ -335,10 +334,13 @@ const formSchema = [
   {
     name: 'hobby',
     label: '爱好',
-    inputType: 'checkbox',
-    collection: checkboxCollection,
-    propsOptions: null,
-    button: true
+    inputType: 'radio',
+    collection: radiosCollection,
+    propsOptions: {
+      label: 'name',
+      value: 'id'
+    },
+    border: true
   },
   {
     fieldset: true,

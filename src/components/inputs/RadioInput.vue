@@ -5,18 +5,23 @@
 <template>
   <el-form-item class="radio-input" :label="label" :prop="name" :required="required">
     <el-radio-group v-model="selected" @change="$emit('input', $event)">
-      <template v-for="item in collection">
+      <template v-for="(item, index) in options">
         <el-radio
-          v-if="!radioButton"
+          v-if="!button"
           :border="border"
-          :label="item.value"
-          :key="item.value"
-          :disabled="disabled"
+          :key="props ? item[props.value] : index"
+          :label="props ? item[props.value] : item"
+          :disabled="item.disabled"
         >
-          {{ item.label }}
+          {{ props ? item[props.label] : item }}
         </el-radio>
-        <el-radio-button v-else :label="item.value" :key="item.value" :disabled="disabled">
-          {{ item.label }}
+        <el-radio-button
+          v-else
+          :key="props ? item[props.value] : index"
+          :label="props ? item[props.value] : item"
+          :disabled="item.disabled"
+        >
+          {{ props ? item[props.label] : item }}
         </el-radio-button>
       </template>
     </el-radio-group>
@@ -25,6 +30,7 @@
 
 <script>
 import inputMixin from '@/mixins/input-mixin'
+import cloneDeep from 'lodash/cloneDeep'
 export default {
   name: 'RadioInput',
   mixins: [inputMixin],
@@ -35,23 +41,75 @@ export default {
         return []
       }
     },
+    collectionName: {
+      type: String,
+      default: ''
+    },
+    propsOptions: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
     border: {
       type: Boolean,
       default: false
     },
-    radioButton: {
+    button: {
       type: Boolean,
       default: false
     }
   },
   data() {
     return {
-      selected: this.value
+      selected: null,
+      options: [],
+      props: {
+        value: 'id',
+        label: 'name'
+      }
     }
   },
   watch: {
-    value(value) {
-      this.selected = value
+    propsOptions: {
+      handler(value) {
+        if (value === null) return (this.props = value)
+        this.props = {
+          ...this.props,
+          ...cloneDeep(value)
+        }
+        console.log(value)
+      },
+      immediate: true
+    },
+    value: {
+      handler(value) {
+        if (!value) return (this.selected = '')
+        this.selected = value
+      },
+      immediate: true
+    },
+    collection: {
+      handler(value) {
+        if (this.collectionName) return
+        this.options = value
+      },
+      immediate: true
+    },
+    collectionName: {
+      handler(value) {
+        if (!value) return
+        const [model, key] = value.split('/')
+        try {
+          if (key) {
+            this.options = this.$store.state[model][key]
+          } else {
+            this.options = this.$store.state[model]
+          }
+        } catch (err) {
+          this.options = []
+        }
+      }
     }
   }
 }
