@@ -11,7 +11,13 @@
       v-model="selected"
       @change="$emit('input', $event)"
     >
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+      <el-option
+        v-for="(item, index) in options"
+        :key="props ? item[props.value] : index"
+        :label="props ? item[props.label] : item"
+        :value="props ? item[props.value] : item"
+        :disabled="item.disabled"
+      >
       </el-option>
     </el-select>
   </el-form-item>
@@ -41,15 +47,35 @@ export default {
     multiple: {
       type: Boolean,
       default: false
+    },
+    propsOptions: {
+      type: Object,
+      default() {
+        return {}
+      }
     }
   },
   data() {
     return {
       options: [],
-      selected: null
+      selected: null,
+      props: {
+        value: 'id',
+        label: 'name'
+      }
     }
   },
   watch: {
+    propsOptions: {
+      handler(value) {
+        if (value === null) return (this.props = value)
+        this.props = {
+          ...this.props,
+          ...cloneDeep(value)
+        }
+      },
+      immediate: true
+    },
     value: {
       handler(value) {
         if (!value) return (this.selected = null)

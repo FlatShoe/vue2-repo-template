@@ -4,7 +4,12 @@
 -->
 <template>
   <div class="use-concision-form">
-    <concision-form ref="concisionFormRef" :formSchema="formSchema" :formRules="formRules">
+    <concision-form
+      ref="concisionFormRef"
+      :formSchema="formSchema"
+      :formRules="formRules"
+      @submit="submit"
+    >
       <template slot="hiddenDangereType">
         <span>123</span>
       </template>
@@ -314,7 +319,7 @@ const selectCollection = [
 ]
 
 const formRules = {
-  keyParameterIndex: {required: true, message: '请输入参数索引'}
+  keyParameterIndex: {required: true, message: '请输入参数索引', trigger: 'blur'}
 }
 
 const formSchema = [
@@ -345,12 +350,13 @@ const formSchema = [
         label: '手段',
         inputType: 'select',
         collection: [
-          {label: '拍照', value: '拍照'},
-          {label: '热成像', value: '热成像'},
-          {label: '振动', value: '振动'},
-          {label: '摄像', value: '摄像'}
+          {rickName: '拍照', id: '1'},
+          {rickName: '热成像', id: '2'},
+          {rickName: '振动', id: '3'},
+          {rickName: '摄像', id: '4', disabled: true}
         ],
-        value: '拍照'
+        propsOptions: {label: 'rickName', value: 'id'},
+        value: '1'
       }
     ]
   }
@@ -379,6 +385,9 @@ export default {
     },
     handelReset() {
       this.$refs.concisionFormRef.resetForm()
+    },
+    submit(formData) {
+      console.log(formData)
     }
   }
 }
