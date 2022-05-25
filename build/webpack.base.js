@@ -5,21 +5,20 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const resolve = (dir) => {
+const resolve = dir => {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = (env = 'development') => {
-  const styleLoader = (
-    env === 'production' ? 
-    {
-      loader: MiniCssExtractPlugin.loader,
-      options: {
-        publicPath: '../'
-      }
-    } : 
-    'vue-style-loader'
-  )
+  const styleLoader =
+    env === 'production'
+      ? {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: '../'
+          }
+        }
+      : 'vue-style-loader'
 
   return {
     entry: './src/main.js',
@@ -113,7 +112,7 @@ module.exports = (env = 'development') => {
     ],
     resolve: {
       alias: {
-        'vue$': 'vue/dist/vue.esm.js',
+        vue$: 'vue/dist/vue.esm.js',
         '@': resolve('src')
       },
       extensions: ['.js', '.vue', '.json']
