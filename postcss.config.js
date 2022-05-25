@@ -1,21 +1,11 @@
 module.exports = {
   plugins: {
     'postcss-preset-env': {},
-    'postcss-px-to-viewport': {
-      unitToConvert: 'px',
-      viewportWidth: 1920,
-      unitPrecision: 5,
+    'postcss-pxtorem': {
+      rootValue: 16,
       propList: ['*'],
-      viewportUnit: 'vw',
-      fontViewportUnit: 'vw',
-      selectorBlackList: [],
-      minPixelValue: 1,
-      mediaQuery: false,
-      replace: true,
-      exclude: [],
-      landscape: false,
-      landscapeUnit: 'vw',
-      landscapeWidth: 1920
+      selectorBlackList: ['van-', 'el-'],
+      unitPrecision: 3
     }
   },
   parser: 'postcss-scss'

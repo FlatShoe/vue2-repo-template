@@ -80,7 +80,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'mini'
+      default: 'medium'
     }
   },
   data() {
