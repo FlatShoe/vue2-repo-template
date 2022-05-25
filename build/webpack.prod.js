@@ -4,6 +4,7 @@ const {ProgressPlugin} = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(base('production'), {
   mode: 'production',
@@ -71,7 +72,8 @@ module.exports = merge(base('production'), {
     }),
     new CompressionPlugin({
       test: /\.(css|js)$/
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ],
   externals: {
     lodash: '_'
