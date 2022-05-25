@@ -16,9 +16,7 @@
       :show-summary="showSummary"
       :summary-method="summaryMethod"
     >
-      <template
-        v-for="(column, index) in columns"
-      >
+      <template v-for="(column, index) in columns">
         <el-table-column
           v-if="column.name && column.name.startsWith('__slot:')"
           :key="column.key ? column.key + index : index"
@@ -44,10 +42,13 @@
           :align="column.align || columnAlign"
           :sortable="column.sortable"
           :formatter="
-          (column.type === 'date' ||
-          column.type === 'dateTime' ||
-          column.type === 'datetime' ||
-          column.type === 'dateTimeAll') ? strftime : null"
+            column.type === 'date' ||
+            column.type === 'dateTime' ||
+            column.type === 'datetime' ||
+            column.type === 'dateTimeAll'
+              ? strftime
+              : null
+          "
         >
         </el-table-column>
       </template>
@@ -56,7 +57,7 @@
     <div class="bottom-bar" v-if="showBottomBar">
       <div class="bottom-bar-left">
         <slot name="bottom-left-bar"></slot>
-      </div> 
+      </div>
       <div class="bottom-bar-right">
         <pagination
           :paginationBackground="paginationBackground"
@@ -68,12 +69,12 @@
           @page-size-change="$emit('page-size-change', $event)"
           @page-change="$emit('page-change', $event)"
         />
-      </div> 
+      </div>
     </div>
   </div>
 </template>
 <script>
-import dayJs from 'dayjs'
+import dayjs from 'dayjs'
 import Pagination from './Pagination'
 export default {
   name: 'DataTable',
@@ -167,24 +168,24 @@ export default {
         date: 'YYYY-MM-DD',
         dateTime: 'YYYY-MM-DD HH:mm',
         datetime: 'YYYY-MM-DD HH:mm',
-        dateTimeAll: 'YYYY-MM-DD HH:mm:ss', 
+        dateTimeAll: 'YYYY-MM-DD HH:mm:ss'
       }
       if (!dateTypes[column.type]) return cellValue
-      return dayJs(cellValue).format(dateTypes[column.type])
+      return dayjs(cellValue).format(dateTypes[column.type])
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-  .data-table {
-    .table-content {
-      flex: 1;
-    }
-    .bottom-bar {
-      display: flex;
-      justify-content: space-between;
-      box-sizing: border-box;
-      padding: 5px 10px;
-    }
+.data-table {
+  .table-content {
+    flex: 1;
   }
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 5px 10px;
+  }
+}
 </style>

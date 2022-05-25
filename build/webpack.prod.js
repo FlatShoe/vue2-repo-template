@@ -76,6 +76,7 @@ module.exports = merge(base('production'), {
     new BundleAnalyzerPlugin()
   ],
   externals: {
-    lodash: '_'
+    lodash: '_',
+    dayjs: 'dayjs'
   }
 })
