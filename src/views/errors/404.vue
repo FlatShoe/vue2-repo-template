@@ -9,16 +9,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.error-404 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  img {
-    width: 500px;
-    height: 500px;
-    vertical-align: middle;
-  }
-}  
+// .error-404 {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   height: 100%;
+//   img {
+//     width: 500px;
+//     height: 500px;
+//     vertical-align: middle;
+//   }
+// }
 </style>

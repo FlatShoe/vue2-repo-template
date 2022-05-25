@@ -60,41 +60,41 @@ export default {
   },
   components: {
     ScrollView
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  .page-card-wrapper {
+.page-card-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background-color: #fbf9fc;
+  box-sizing: border-box;
+  margin: 0px 10px 10px 10px;
+  overflow: hidden;
+  &.margin-top {
+    margin-top: 10px;
+  }
+  &.margin-bottom {
+    margin-bottom: 10px;
+  }
+  &.clear-margin {
+    margin: 0;
+    width: 100%;
+  }
+  .page-card-inner {
     flex: 1;
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
-    background-color: #FBF9FC;
-    box-sizing: border-box;
-    margin: 0px 10px 10px 10px;
     overflow: hidden;
-    &.margin-top {
-      margin-top: 10px;
-    }
-    &.margin-bottom {
-      margin-bottom: 10px;
-    }
-    &.clear-margin {
-      margin: 0;
-      width: 100%;
-    }
-    .page-card-inner {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    &.always-shadow {
-      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-    }
-    &.always-border {
-      border: 1px solid #ebeef5;
-    }
   }
+  &.always-shadow {
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  }
+  &.always-border {
+    border: 1px solid #ebeef5;
+  }
+}
 </style>
