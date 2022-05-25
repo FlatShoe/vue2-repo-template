@@ -24,7 +24,8 @@ import {
   Checkbox,
   CheckboxButton,
   Select,
-  Option
+  Option,
+  Transfer
 } from 'element-ui'
 
 Vue.use(Col)
@@ -52,3 +53,4 @@ Vue.use(Checkbox)
 Vue.use(CheckboxButton)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Transfer)

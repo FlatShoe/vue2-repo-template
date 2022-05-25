@@ -291,16 +291,16 @@ const cascaderCollection = [
 ]
 const radiosCollection = [
   {
-    id: '1',
-    name: '单选框1'
+    key: '1',
+    label: '单选框1'
   },
   {
-    id: '2',
-    name: '单选框2'
+    key: '2',
+    label: '单选框2'
   },
   {
-    id: '3',
-    name: '单选框3'
+    key: '3',
+    label: '单选框3'
   }
 ]
 const selectCollection = [
@@ -332,13 +332,24 @@ const formSchema = [
     value: ['zhinan', 'shejiyuanze', 'yizhi']
   },
   {
+    name: 'lerna',
+    label: '了那',
+    inputType: 'transfer',
+    collection: radiosCollection,
+    propsOptions: {
+      label: 'label',
+      key: 'key'
+    },
+    value: ['1', '2']
+  },
+  {
     name: 'hobby',
     label: '爱好',
     inputType: 'radio',
     collection: radiosCollection,
     propsOptions: {
-      label: 'name',
-      value: 'id'
+      label: 'label',
+      value: 'key'
     },
     border: true
   },
