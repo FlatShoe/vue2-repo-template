@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import flatMap from 'lodash/flatMap'
+import _ from 'lodash'
 export default {
   name: 'ConcisionForm',
   props: {
@@ -112,7 +112,7 @@ export default {
       } catch (err) {}
     },
     syncFormData(data) {
-      flatMap(this.formSchema, item => {
+      _.flatMap(this.formSchema, item => {
         if (item.fieldset && item.inputs.length) {
           return item.inputs
         } else {

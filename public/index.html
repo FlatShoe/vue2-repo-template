@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>repo-template</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>非常抱歉，您的浏览器目前不支持访问，请更新浏览器或使用谷歌浏览器</strong>
-    </noscript>
-    <div id="app"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>repo-template</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>非常抱歉，您的浏览器目前不支持访问，请更新浏览器或使用谷歌浏览器</strong>
+  </noscript>
+  <div id="app"></div>
+  <% if (process.env.NODE_ENV==='production' ) { %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+    <% } %>
+</body>
+
 </html>

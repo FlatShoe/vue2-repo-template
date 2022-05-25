@@ -72,5 +72,8 @@ module.exports = merge(base('production'), {
     new CompressionPlugin({
       test: /\.(css|js)$/
     })
-  ]
+  ],
+  externals: {
+    lodash: '_'
+  }
 })

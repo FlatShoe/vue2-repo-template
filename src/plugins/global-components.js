@@ -1,11 +1,10 @@
 import Vue from 'vue'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
+import _ from 'lodash'
 
 const requireComponent = require.context('../components/inputs', false, /[A-Z]\w+\.(vue|js)$/)
 
 requireComponent.keys().forEach(fileName => {
-  const componentName = upperFirst(camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, '$1')))
+  const componentName = _.upperFirst(_.camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, '$1')))
   const componentConfig = requireComponent(fileName)
 
   Vue.component(componentName, componentConfig.default || componentConfig)

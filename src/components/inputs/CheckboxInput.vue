@@ -30,7 +30,7 @@
 
 <script>
 import inputMixin from '@/mixins/input-mixin'
-import cloneDeep from 'lodash/cloneDeep'
+import _ from 'lodash'
 export default {
   name: 'CheckboxInput',
   mixins: [inputMixin],
@@ -76,7 +76,7 @@ export default {
         if (value === null) return (this.props = value)
         this.props = {
           ...this.props,
-          ...cloneDeep(value)
+          ..._.cloneDeep(value)
         }
         console.log(value)
       },
@@ -85,7 +85,7 @@ export default {
     value: {
       handler(value) {
         if (!value) return (this.selectedItems = [])
-        this.selectedItems = cloneDeep(value)
+        this.selectedItems = _.cloneDeep(value)
       },
       immediate: true
     },

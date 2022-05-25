@@ -25,7 +25,7 @@
 
 <script>
 import inputMixin from '@/mixins/input-mixin'
-import cloneDeep from 'lodash/cloneDeep'
+import _ from 'lodash'
 export default {
   name: 'SelectInput',
   mixins: [inputMixin],
@@ -71,7 +71,7 @@ export default {
         if (value === null) return (this.props = value)
         this.props = {
           ...this.props,
-          ...cloneDeep(value)
+          ..._.cloneDeep(value)
         }
       },
       immediate: true
@@ -79,7 +79,7 @@ export default {
     value: {
       handler(value) {
         if (!value) return (this.selected = null)
-        this.selected = cloneDeep(value)
+        this.selected = _.cloneDeep(value)
       },
       immediate: true
     },

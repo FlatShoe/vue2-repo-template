@@ -19,7 +19,7 @@
 
 <script>
 import inputMixin from '@/mixins/input-mixin'
-import cloneDeep from 'lodash/cloneDeep'
+import _ from 'lodash'
 export default {
   name: 'CascaderInput',
   mixins: [inputMixin],
@@ -100,7 +100,7 @@ export default {
     value: {
       handler(value) {
         if (!value) return (this.selectedItems = [])
-        this.selectedItems = cloneDeep(value)
+        this.selectedItems = _.cloneDeep(value)
       },
       immediate: true
     }
