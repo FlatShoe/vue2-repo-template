@@ -16,9 +16,7 @@
     </concision-form>
     <el-button @click="handlerSubmit">提交</el-button>
     <el-button @click="handelReset">清除</el-button>
-    <div class="test" style="width: 400px; height: 500px; font: 40px; background-color: pink">
-      你好
-    </div>
+    <div class="test">你好</div>
   </div>
 </template>
 
@@ -422,5 +420,10 @@ export default {
 .use-concision-form {
   height: 100%;
   overflow-y: auto;
+  .test {
+    width: 800px;
+    height: 500px;
+    background-color: pink;
+  }
 }
 </style>
