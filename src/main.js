@@ -9,6 +9,10 @@ import './plugins/element.js'
 import './plugins/global-components.js'
 import './utils/rem.js'
 
+if (process.env.NODE_ENV === 'development') {
+  require('./mock')
+}
+
 Vue.use(Vuebar)
 
 Vue.config.productionTip = false
