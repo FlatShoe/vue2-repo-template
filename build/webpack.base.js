@@ -58,7 +58,7 @@ module.exports = (env = 'development') => {
           ]
         },
         {
-          test: /\.(png|jpe?g|gif|webp|avif)(\?.*)?$/,
+          test: /\.(png|jpe?g|gif|webp|svg|avif)(\?.*)?$/,
           type: 'asset',
           generator: {
             filename: 'image/[name].[hash:8][ext]'
@@ -67,13 +67,15 @@ module.exports = (env = 'development') => {
             dataUrlCondition: {
               maxSize: 10 * 1024
             }
-          }
+          },
+          exclude: [resolve('src/assets/svg-sprite')]
         },
         {
-          test: /\.(svg)(\?.*)?$/,
-          type: 'asset/resource',
-          generator: {
-            filename: 'image/[name].[hash:8][ext]'
+          test: /\.svg$/,
+          loader: 'svg-sprite-loader',
+          include: [resolve('src/assets/svg-sprite')],
+          options: {
+            symbolId: 'icon-[name]'
           }
         },
         {
