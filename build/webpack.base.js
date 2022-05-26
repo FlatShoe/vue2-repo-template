@@ -37,7 +37,8 @@ module.exports = (env = 'development') => {
             {
               loader: 'css-loader',
               options: {
-                importLoaders: 1
+                importLoaders: 1,
+                sourceMap: false
               }
             },
             'postcss-loader'
@@ -50,7 +51,8 @@ module.exports = (env = 'development') => {
             {
               loader: 'css-loader',
               options: {
-                importLoaders: 2
+                importLoaders: 2,
+                sourceMap: false
               }
             },
             'sass-loader',

@@ -8,6 +8,7 @@ const UseLeftRightPage = () => import('@/views/components-use-show/UseLeftRightP
 const UseScrollView = () => import('@/views/components-use-show/UseScrollView.vue')
 const UsePageCard = () => import('@/views/components-use-show/UsePageCard.vue')
 const UseConcisionForm = () => import('@/views/components-use-show/UseConcisionForm.vue')
+const Login = () => import('@/views/Login.vue')
 Vue.use(VueRouter)
 const routes = [
   {
@@ -45,6 +46,10 @@ const routes = [
   {
     path: '/components-use-concision-form',
     component: UseConcisionForm
+  },
+  {
+    path: '/login',
+    component: Login
   }
 ]
 
