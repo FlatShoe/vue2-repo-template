@@ -1,7 +1,7 @@
 /**
  * 本地持久存储
  */
- export const localStorage = {
+export const localStorage = {
   set(key, value) {
     window.localStorage.setItem(key, JSON.stringify(value))
   },

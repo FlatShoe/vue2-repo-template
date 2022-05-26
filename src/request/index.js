@@ -3,7 +3,7 @@ import {MessageBox} from 'element-ui'
 
 export class Request {
   constructor(baseURL, timeout = 10000) {
-    baseURL = baseURL || 'xxxxxx'
+    baseURL = baseURL || 'xxxx'
     this.baseURL = baseURL
     this.timeout = timeout
     this.instance = null
@@ -70,7 +70,9 @@ export class Request {
         error.config && this._removePending(error.config)
         if (axios.isCancel(error)) {
           const url = error.message.split('&')[0]
-          console.warn(`基于相同接口相同参数，未响应时，拦截到意外的重复请求。 已取消对 ${this.baseURL}/${url} 的重复请求`)
+          console.warn(
+            `基于相同接口相同参数，未响应时，拦截到意外的重复请求。 已取消对 ${this.baseURL}/${url} 的重复请求`
+          )
           return
         }
         if (error.response && error.response.status === 401) {

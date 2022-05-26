@@ -5,12 +5,12 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" ref="formRef" :rules="rules" :model="form">
-      <el-form-item prop="username">
+      <el-form-item prop="account">
         <el-input
           placeholder="请输入用户名"
-          name="username"
+          name="account"
           type="text"
-          v-model="form.username"
+          v-model="form.account"
         ></el-input>
       </el-form-item>
       <el-form-item prop="password">
@@ -19,6 +19,7 @@
           name="password"
           type="password"
           v-model="form.password"
+          @keyup.enter.native="handleLogin"
         ></el-input>
       </el-form-item>
       <el-form-item>
@@ -31,8 +32,9 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 const rules = {
-  username: {required: true, trigger: 'blur', message: '请输入用户名'},
+  account: {required: true, trigger: 'blur', message: '请输入用户名'},
   password: {required: true, trigger: 'blur', message: '请输入密码'}
 }
 export default {
@@ -41,18 +43,23 @@ export default {
     return {
       loading: false,
       form: {
-        username: '',
+        account: '',
         password: ''
       },
       rules
     }
   },
   methods: {
+    ...mapActions('user', ['login']),
+    /*
+     * @Description 操作登陆
+     */
     async handleLogin() {
       if (this.loading) return
-      this.loading = true
-      const valid = await this.$refs.formRef.validate().catch(err => (this.loading = false))
+      const valid = await this.$refs.formRef.validate().catch(err => err)
       if (!valid) return
+      this.loading = true
+      await this.login(this.form).catch(() => (this.loading = false))
       this.loading = false
     }
   }
@@ -85,7 +92,6 @@ export default {
     max-width: 100%;
     margin: 0 auto;
     overflow: hidden;
-    backdrop-filter: blur(10px);
   }
   .login-button {
     width: 100%;
