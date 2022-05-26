@@ -62,6 +62,8 @@ module.exports = {
     'quote-props': 0,
     'vue/no-unused-components': 0,
     'no-unneeded-ternary': 0,
-    'import/no-extraneous-dependencies': 0
+    'import/no-extraneous-dependencies': 0,
+    'operator-linebreak': 0,
+    'no-unused-expressions': 0
   }
 }
