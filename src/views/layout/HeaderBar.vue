@@ -22,15 +22,17 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'Header',
   methods: {
+    ...mapMutations('system', ['logout']),
     /**
      * @Description 操作指令
      */
     handleCommand(command) {
       if (command === 'logout') {
-        console.log('退出')
+        this.logout()
       }
     }
   }
@@ -46,6 +48,9 @@ export default {
   height: 100%;
   .user-control {
     height: fit-content;
+    .dropdown-avatar {
+      cursor: pointer;
+    }
   }
 }
 </style>

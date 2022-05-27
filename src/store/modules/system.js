@@ -1,6 +1,6 @@
 import {login, getUserInfo} from '@/api/system'
 import {sessionStorage} from '@/modules/storage'
-import {TOKEN} from '@/constant/index'
+import {LOGINPATH, TOKEN} from '@/constant/index'
 import router from '@/router'
 
 export default {
@@ -16,6 +16,12 @@ export default {
     },
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo
+    },
+    logout(state) {
+      state.token = ''
+      state.userInfo = {}
+      sessionStorage.remove(TOKEN)
+      router.push(LOGINPATH)
     }
   },
   actions: {
