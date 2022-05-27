@@ -3,11 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Vuebar from 'vuebar'
-import './assets/style/index.scss'
-import 'element-ui/lib/theme-chalk/index.css'
+import './modules/permission'
 import './plugins/element.js'
 import './plugins/global-components.js'
 import './utils/rem.js'
+import './assets/style/index.scss'
+import 'element-ui/lib/theme-chalk/index.css'
 
 if (process.env.NODE_ENV === 'development') {
   require('./mock')

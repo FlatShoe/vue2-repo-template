@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('user', ['login']),
+    ...mapActions('system', ['login']),
     /*
      * @Description 操作登陆
      */
