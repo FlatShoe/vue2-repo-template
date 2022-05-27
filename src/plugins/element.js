@@ -25,7 +25,11 @@ import {
   CheckboxButton,
   Select,
   Option,
-  Transfer
+  Transfer,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Avatar
 } from 'element-ui'
 
 Vue.use(Col)
@@ -54,3 +58,7 @@ Vue.use(CheckboxButton)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Transfer)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+Vue.use(Avatar)

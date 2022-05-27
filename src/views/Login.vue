@@ -79,12 +79,13 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
+@import '~@/assets/style/variables.scss';
 .login-container {
   display: flex;
   align-items: center;
   min-height: 100%;
   width: 100%;
-  background-image: linear-gradient(to right, #d0e9f9 0%, #ffffff 100%);
+  background-image: linear-gradient(to right, $themeBg 0%, #ffffff 100%);
   overflow: hidden;
   .login-form {
     position: relative;

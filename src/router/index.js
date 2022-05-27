@@ -9,12 +9,8 @@ const UseScrollView = () => import('@/views/components-use-show/UseScrollView.vu
 const UsePageCard = () => import('@/views/components-use-show/UsePageCard.vue')
 const UseConcisionForm = () => import('@/views/components-use-show/UseConcisionForm.vue')
 const Login = () => import('@/views/Login.vue')
-Vue.use(VueRouter)
+const Layout = () => import('@/views/layout/Layout.vue')
 const routes = [
-  {
-    path: '/',
-    component: () => import('@/views/Home')
-  },
   {
     path: '*',
     component: () => import('@/views/errors/404')
@@ -50,9 +46,18 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/',
+    component: Layout
+  },
+  {
+    path: '/home',
+    component: () => import('@/views/Home')
   }
 ]
 
+Vue.use(VueRouter)
 const router = new VueRouter({
   routes
 })
