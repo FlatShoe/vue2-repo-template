@@ -3,11 +3,14 @@ import store from '@/store'
 import {LOGINPATH} from '@/constant/index'
 import whiteList from './whiteList'
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (store.getters.token) {
     if (to.path === LOGINPATH) {
       next({path: '/'})
     } else {
+      if (!store.getters.userInfo) {
+        await store.dispatch('system/getUserInfo')
+      }
       next()
     }
   } else {

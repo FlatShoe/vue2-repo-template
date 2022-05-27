@@ -1,4 +1,4 @@
-import {login} from '@/api/system'
+import {login, getUserInfo} from '@/api/system'
 import {sessionStorage} from '@/modules/storage'
 import {TOKEN} from '@/constant/index'
 import router from '@/router'
@@ -6,12 +6,16 @@ import router from '@/router'
 export default {
   namespaced: true,
   state: {
-    token: sessionStorage.get(TOKEN) || ''
+    token: sessionStorage.get(TOKEN) || '',
+    userInfo: {}
   },
   mutations: {
     setToken(state, token) {
       state.token = token
       sessionStorage.set(TOKEN, token)
+    },
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   actions: {
@@ -28,6 +32,11 @@ export default {
             reject(error)
           })
       })
+    },
+    async getUserInfo({commit}) {
+      const result = await getUserInfo()
+      commit('setUserInfo', result)
+      return result
     }
   }
 }

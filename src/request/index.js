@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 import {MessageBox} from 'element-ui'
 
 export class Request {
@@ -46,9 +47,10 @@ export class Request {
     this.instance.interceptors.request.use(request => {
       this._removePending(request)
       this._addPending(request)
-      const token = null
+      const token = store.getters.token
       if (token) {
-        request.headers['Authorization'] = token
+        // request.headers['Authorization'] = `Bearer ${token}`
+        request.headers['Authorization'] = `${token}`
       }
       return request
     })
