@@ -4,7 +4,7 @@ import {MessageBox} from 'element-ui'
 
 export class Request {
   constructor(baseURL, timeout = 10000) {
-    baseURL = baseURL || 'xxxx'
+    baseURL = baseURL || 'http://61.157.13.136:32221'
     this.baseURL = baseURL
     this.timeout = timeout
     this.instance = null

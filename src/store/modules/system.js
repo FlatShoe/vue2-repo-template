@@ -20,7 +20,7 @@ export default {
     logout(state) {
       state.token = ''
       state.userInfo = {}
-      sessionStorage.remove(TOKEN)
+      sessionStorage.removeAllItem()
       router.push(LOGINPATH)
     }
   },
