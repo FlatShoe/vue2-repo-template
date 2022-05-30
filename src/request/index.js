@@ -81,6 +81,7 @@ export class Request {
           await MessageBox.alert('登录状态已过期，请重新登录', '错误提示', {
             showClose: false
           })
+          store.commit('system/logout')
         } else if (error.response && error.response.status === 404) {
           await MessageBox.alert('请求资源不存在', '错误提示', {
             showClose: false
