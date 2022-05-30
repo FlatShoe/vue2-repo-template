@@ -1,55 +1,46 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-const UseDataTable = () => import('@/views/components-use-show/UseDataTable.vue')
-const UseBreadcrumb = () => import('@/views/components-use-show/UseBreadcrumb.vue')
-const UseFormDialog = () => import('@/views/components-use-show/UseFormDialog.vue')
-const UseLeftRightPage = () => import('@/views/components-use-show/UseLeftRightPage.vue')
-const UseScrollView = () => import('@/views/components-use-show/UseScrollView.vue')
-const UsePageCard = () => import('@/views/components-use-show/UsePageCard.vue')
-const UseConcisionForm = () => import('@/views/components-use-show/UseConcisionForm.vue')
-const Login = () => import('@/views/Login.vue')
-const Layout = () => import('@/views/layout/Layout.vue')
+import publicRoutes from './publicRoutes'
 const routes = [
   {
     path: '*',
-    component: () => import('@/views/errors/404')
+    component: () => import(/* webpackChunkName: "errors-404" */ '@/views/errors/404')
   },
   {
     path: '/components-use-data-table',
-    component: UseDataTable
+    component: () => import('@/views/components-use-show/UseDataTable.vue')
   },
   {
     path: '/components-use-breadcrumb',
-    component: UseBreadcrumb
+    component: () => import('@/views/components-use-show/UseBreadcrumb.vue')
   },
   {
     path: '/components-use-form-dialog',
-    component: UseFormDialog
+    component: () => import('@/views/components-use-show/UseFormDialog.vue')
   },
   {
     path: '/components-use-left-right-page',
-    component: UseLeftRightPage
+    component: () => import('@/views/components-use-show/UseLeftRightPage.vue')
   },
   {
     path: '/components-use-scroll-view',
-    component: UseScrollView
+    component: () => import('@/views/components-use-show/UseScrollView.vue')
   },
   {
     path: '/components-use-page-card',
-    component: UsePageCard
+    component: () => import('@/views/components-use-show/UsePageCard.vue')
   },
   {
     path: '/components-use-concision-form',
-    component: UseConcisionForm
+    component: () => import('@/views/components-use-show/UseConcisionForm.vue')
   },
   {
     path: '/login',
-    component: Login
+    component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
   },
   {
     path: '/',
-    component: Layout
+    component: () => import('@/views/layout/Layout.vue')
   },
   {
     path: '/home',
@@ -59,7 +50,7 @@ const routes = [
 
 Vue.use(VueRouter)
 const router = new VueRouter({
-  routes
+  routes: publicRoutes
 })
 
 export default router

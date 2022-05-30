@@ -9,7 +9,7 @@
       <div class="layout-header">
         <header-bar />
       </div>
-      <main class="layout-main" />
+      <app-main class="layout-main" />
     </div>
   </div>
 </template>
@@ -17,13 +17,13 @@
 <script>
 import Sidebar from './Sidebar.vue'
 import HeaderBar from './HeaderBar.vue'
-import Main from './Main.vue'
+import AppMain from './AppMain.vue'
 export default {
   name: 'Layout',
   components: {
     Sidebar,
     HeaderBar,
-    Main
+    AppMain
   }
 }
 </script>
@@ -36,7 +36,7 @@ export default {
   height: 100%;
   overflow: hidden;
   .layout-sidebar {
-    flex: 0 0 $sideBarWidth;
+    flex: 0 0 230px;
     background-color: $themeBg;
   }
   .layout-wrapper {
@@ -51,7 +51,7 @@ export default {
     overflow: hidden;
   }
   .layout-header {
-    flex: 0 0 $headerHeight;
+    flex: 0 0 70px;
     background-color: $themeBg;
   }
   .layout-main {

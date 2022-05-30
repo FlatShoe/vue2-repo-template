@@ -3,12 +3,14 @@
 * @Date 2022-05-27
 -->
 <template>
-  <div></div>
+  <div class="page">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Main'
+  name: 'AppMain'
 }
 </script>
 
