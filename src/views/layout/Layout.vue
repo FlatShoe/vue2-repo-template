@@ -4,7 +4,7 @@
 -->
 <template>
   <div class="layout-container">
-    <sidebar class="layout-sidebar" :class="{hidden: !collapse}" />
+    <sidebar class="layout-sidebar" :class="{hide: !collapse}" />
     <div class="layout-wrapper">
       <div class="layout-header">
         <header-bar />
@@ -34,16 +34,20 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/assets/style/variables.scss';
+$sidebar-width: 240px;
+$sidebar-hide-width: 80px;
+$header-height: 70px;
 .layout-container {
   display: flex;
   width: 100%;
   height: 100%;
   overflow: hidden;
   .layout-sidebar {
-    flex: 0 0 230px;
+    transition: flex $sidebarDurtion;
+    flex: 0 0 $sidebar-width;
     background-color: $themeBg;
-    &.hidden {
-      flex: 0 0 60px;
+    &.hide {
+      flex: 0 0 $sidebar-hide-width;
     }
   }
   .layout-wrapper {
@@ -58,7 +62,7 @@ export default {
     overflow: hidden;
   }
   .layout-header {
-    flex: 0 0 70px;
+    flex: 0 0 $header-height;
     background-color: $themeBg;
   }
   .layout-main {

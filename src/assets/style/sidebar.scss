@@ -3,33 +3,40 @@ $submenuPadding: 0 16px;
 // 单菜单内边距
 $menuItemPadding: 0 44px;
 // 多菜单背景
-$submenuBg: rgba(167, 201, 225, .4);
+$submenuBg: rgba(167, 201, 225, 0.4);
 // 单菜单背景
-$menuItemBg: rgba(167, 201, 225, .2);
+$menuItemBg: rgba(167, 201, 225, 0.2);
 // 图标宽度
 $iconWidth: 30px;
 // 图标高度
 $iconHeight: 30px;
-// 图标外边距
-$iconMargin: 0 10px 0 0;
+// 字体大小
+$textFontSize: 14px;
 // 文字颜色
 $textColor: #000;
 // 文字高亮颜色
-$textActiveColor: #4F93F7;
+$textActiveColor: #4f93f7;
 
 .sidebar {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  .el-menu {
+    border: none;
+  }
   .el-submenu__title,
   .el-menu-item {
-    padding: 0 !important; 
+    padding: 0 !important;
   }
-  .el-menu-item:focus, .el-menu-item:hover,
-  .el-submenu__title:focus, .el-submenu__title:hover {
+  .el-menu-item:focus,
+  .el-menu-item:hover,
+  .el-submenu__title:focus,
+  .el-submenu__title:hover {
     background-color: transparent;
   }
+  // 折叠时样式
   .el-menu--collapse {
+    width: 100%;
     .el-submenu__title {
       display: flex;
       align-items: center;
@@ -37,6 +44,17 @@ $textActiveColor: #4F93F7;
     .el-menu-item {
       display: flex;
       align-items: center;
+    }
+    .submenu-wrapper,
+    .menu-item-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 !important;
+      .menu-item-title {
+        display: none !important;
+      }
     }
   }
   .el-menu--collapse > div > .el-submenu > .el-submenu__title span {
@@ -52,16 +70,22 @@ $textActiveColor: #4F93F7;
   .el-menu--collapse > div > .el-menu-item > .menu-item-wrapper > .menu-item > span {
     display: none;
   }
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+  }
   .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 0 16px 0;
     height: 44px;
-    color: $textActiveColor;
     font-weight: 700;
     font-size: 18px;
-    white-space: nowrap;
+    .logo-text {
+      white-space: nowrap;
+      color: $textActiveColor;
+      margin-left: 10px;
+    }
   }
   .menu-main {
     flex: 1;
@@ -74,7 +98,6 @@ $textActiveColor: #4F93F7;
       display: flex;
       align-items: center;
       .menu-item-icon {
-        margin: $iconMargin;
         width: $iconWidth;
         height: $iconWidth;
       }
@@ -84,6 +107,8 @@ $textActiveColor: #4F93F7;
         white-space: nowrap;
         overflow: hidden;
         color: $textColor;
+        font-size: $textFontSize;
+        margin-left: 10px;
       }
     }
   }
