@@ -4,7 +4,7 @@
 -->
 <template>
   <div class="layout-container">
-    <sidebar class="layout-sidebar" />
+    <sidebar class="layout-sidebar" :class="{hidden: !collapse}" />
     <div class="layout-wrapper">
       <div class="layout-header">
         <header-bar />
@@ -18,12 +18,16 @@
 import Sidebar from './Sidebar.vue'
 import HeaderBar from './HeaderBar.vue'
 import AppMain from './AppMain.vue'
+import {mapGetters} from 'vuex'
 export default {
   name: 'Layout',
   components: {
     Sidebar,
     HeaderBar,
     AppMain
+  },
+  computed: {
+    ...mapGetters(['collapse'])
   }
 }
 </script>
@@ -38,6 +42,9 @@ export default {
   .layout-sidebar {
     flex: 0 0 230px;
     background-color: $themeBg;
+    &.hidden {
+      flex: 0 0 60px;
+    }
   }
   .layout-wrapper {
     flex: 1;

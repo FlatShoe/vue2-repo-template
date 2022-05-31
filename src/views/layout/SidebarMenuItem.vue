@@ -3,19 +3,21 @@
 * @Date 2022-05-31
 -->
 <template>
-  <el-submenu v-if="route.children && route.children.length > 0" :index="route.path">
-    <template slot="title">
-      <div class="submenu-wrapper">
+  <div>
+    <el-submenu v-if="route.children && route.children.length > 0" :index="route.path">
+      <template slot="title">
+        <div class="submenu-wrapper">
+          <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+        </div>
+      </template>
+      <sidebar-menu-item v-for="item in route.children" :key="item.path" :route="item" />
+    </el-submenu>
+    <el-menu-item v-else :index="route.path">
+      <div class="menu-item-wrapper">
         <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
       </div>
-    </template>
-    <sidebar-menu-item v-for="item in route.children" :key="item.path" :route="item" />
-  </el-submenu>
-  <el-menu-item v-else :index="route.path">
-    <div class="menu-item-wrapper">
-      <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
-    </div>
-  </el-menu-item>
+    </el-menu-item>
+  </div>
 </template>
 
 <script>

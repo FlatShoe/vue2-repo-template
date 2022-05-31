@@ -5,10 +5,13 @@
 <template>
   <div class="menu-item">
     <img
-      class="menu-item-icon"
-      src="https://img2.baidu.com/it/u=420156118,3874648934&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+      class="menu-item-icon menu-item-icon-not-active"
+      :src="require(`@/assets/images/menu-icons/${icon}.png`)"
     />
-
+    <img
+      class="menu-item-icon menu-item-icon-active"
+      :src="require(`@/assets/images/menu-icons/${icon}-active.png`)"
+    />
     <span class="menu-item-title">{{ title }}</span>
   </div>
 </template>

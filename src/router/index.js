@@ -11,7 +11,7 @@ const privateRoutes = [
     redirect: '/a/a1',
     meta: {
       title: 'a',
-      icon: 'el-icon-s-home'
+      icon: 'test'
     },
     children: [
       {
@@ -19,7 +19,7 @@ const privateRoutes = [
         name: 'A1',
         meta: {
           title: 'a1',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/a/A-1.vue')
       },
@@ -28,7 +28,7 @@ const privateRoutes = [
         name: 'A2',
         meta: {
           title: 'a2',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/a/A-2.vue')
       }
@@ -41,14 +41,14 @@ const privateRoutes = [
     redirect: '/b/b1',
     meta: {
       title: 'b',
-      icon: 'el-icon-s-home'
+      icon: 'test'
     },
     children: [
       {
         path: '/b/b1',
         meta: {
           title: 'b1',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/b/B-1.vue')
       },
@@ -56,7 +56,7 @@ const privateRoutes = [
         path: '/b/b2',
         meta: {
           title: 'b2',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/b/B-2.vue')
       }
@@ -69,14 +69,14 @@ const privateRoutes = [
     redirect: '/c/c1',
     meta: {
       title: 'c',
-      icon: 'el-icon-s-home'
+      icon: 'test'
     },
     children: [
       {
         path: '/c/c1',
         meta: {
           title: 'c1',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/c/C-1.vue')
       },
@@ -84,7 +84,7 @@ const privateRoutes = [
         path: '/c/c2',
         meta: {
           title: 'c2',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/c/C-2.vue')
       }
@@ -99,7 +99,7 @@ const privateRoutes = [
         path: '/d/d1',
         meta: {
           title: 'd1',
-          icon: 'el-icon-s-home'
+          icon: 'test'
         },
         component: () => import('@/views/components-use-show/UseBreadcrumb.vue'),
         children: [

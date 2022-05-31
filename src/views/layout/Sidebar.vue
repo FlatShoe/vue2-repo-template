@@ -21,6 +21,11 @@ export default {
   components: {
     ScrollView,
     SidebarMenu
+  },
+  data() {
+    return {
+      flag: false
+    }
   }
 }
 </script>

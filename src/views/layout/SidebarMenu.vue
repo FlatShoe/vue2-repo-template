@@ -7,7 +7,7 @@
     ref="menuRef"
     uniqueOpened
     router
-    :collapse="collapse"
+    :collapse="!collapse"
     :default-active="defaultActive"
     @open="open"
   >
@@ -18,12 +18,14 @@
 <script>
 import routeMenus from '@/modules/menus'
 import SidebarMenuItem from './SidebarMenuItem.vue'
+import {mapGetters} from 'vuex'
 export default {
   name: 'SidebarMenu',
   components: {
     SidebarMenuItem
   },
   computed: {
+    ...mapGetters(['collapse']),
     menus() {
       return routeMenus.generateMenus(this.$router.options.routes)
     },
@@ -33,11 +35,6 @@ export default {
         return meta.activeMenu
       }
       return path
-    }
-  },
-  data() {
-    return {
-      collapse: false
     }
   },
   methods: {
