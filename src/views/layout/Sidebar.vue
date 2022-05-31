@@ -5,9 +5,11 @@
 <template>
   <div class="sidebar">
     <div class="logo-container"></div>
-    <scroll-view>
-      <sidebar-menu />
-    </scroll-view>
+    <div class="menu-main">
+      <scroll-view style="height: 100%">
+        <sidebar-menu class="sidebar-menu" />
+      </scroll-view>
+    </div>
   </div>
 </template>
 

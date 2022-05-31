@@ -4,10 +4,12 @@
 -->
 <template>
   <div class="menu-item">
-    <!-- <img
+    <img
+      class="menu-item-icon"
       src="https://img2.baidu.com/it/u=420156118,3874648934&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
-    /> -->
-    <span>{{ title }}</span>
+    />
+
+    <span class="menu-item-title">{{ title }}</span>
   </div>
 </template>
 

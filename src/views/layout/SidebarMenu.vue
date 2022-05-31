@@ -3,7 +3,7 @@
 * @Date 2022-05-31
 -->
 <template>
-  <el-menu uniqueOpened :collapse="collapse" :default-active="defaultActive">
+  <el-menu uniqueOpened router :collapse="collapse" :default-active="defaultActive">
     <sidebar-menu-item v-for="route in menus" :key="route.path" :route="route" />
   </el-menu>
 </template>
