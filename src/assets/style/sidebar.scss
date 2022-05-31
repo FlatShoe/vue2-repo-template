@@ -1,7 +1,21 @@
+// 多菜单内边距
 $submenuPadding: 0 16px;
+// 单菜单内边距
 $menuItemPadding: 0 44px;
+// 多菜单背景
 $submenuBg: rgba(167, 201, 225, .4);
+// 单菜单背景
 $menuItemBg: rgba(167, 201, 225, .2);
+// 图标宽度
+$iconWidth: 30px;
+// 图标高度
+$iconHeight: 30px;
+// 图标外边距
+$iconMargin: 0 10px 0 0;
+// 文字颜色
+$textColor: #000;
+// 文字高亮颜色
+$textActiveColor: #4F93F7;
 
 .sidebar {
   display: flex;
@@ -26,34 +40,44 @@ $menuItemBg: rgba(167, 201, 225, .2);
       display: flex;
       align-items: center;
       .menu-item-icon {
-        margin-right: 10px;
-        width: 40px;
-        height: 40px;
+        margin: $iconMargin;
+        width: $iconWidth;
+        height: $iconWidth;
       }
       .menu-item-title {
         flex: 1;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        color: $textColor;
       }
     }
   }
+  // 多菜单样式设置
   .el-submenu {
     &.is-active {
       background: $submenuBg;
     }
-    .menu-item-wrapper {
-      padding: $menuItemPadding;
+    .submenu-wrapper {
+      padding: $submenuPadding;
+    }
+    .el-menu-item {
+      background-color: transparent !important;
+      .menu-item-wrapper {
+        padding: $menuItemPadding;
+      }
     }
   }
-  .submenu-wrapper {
-    padding: $submenuPadding;
-  }
-  .menu-item-wrapper {
-    padding: $submenuPadding;
-  }
-  .router-link-active,
-  .router-link-active.menu-item-title {
-    color: #409EFF !important;
+  // 单菜单样式设置
+  .el-menu-item {
+    &.is-active {
+      background: $submenuBg;
+      .menu-item-title {
+        color: $textActiveColor;
+      }
+    }
+    & > .menu-item-wrapper {
+      padding: $submenuPadding;
+    }
   }
 }

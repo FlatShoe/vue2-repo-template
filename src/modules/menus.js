@@ -2,7 +2,6 @@ import _ from 'lodash'
 class RouteMenus {
   generateMenus(routes) {
     const result = []
-    console.log(routes)
     for (let i = 0; i < routes.length; i++) {
       const route = routes[i]
       if (_.isEmpty(route.meta) && _.isEmpty(route.children)) continue
