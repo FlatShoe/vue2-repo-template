@@ -6,8 +6,9 @@ import Layout from '@/views/layout/Layout.vue'
 const privateRoutes = [
   {
     path: '/a',
+    name: 'A',
     component: Layout,
-    redirect: '/a/a1/',
+    redirect: '/a/a1',
     meta: {
       title: 'a',
       icon: 'el-icon-s-home'
@@ -35,6 +36,7 @@ const privateRoutes = [
   },
   {
     path: '/b',
+    name: 'B',
     component: Layout,
     redirect: '/b/b1',
     meta: {
@@ -62,6 +64,7 @@ const privateRoutes = [
   },
   {
     path: '/c',
+    name: 'C',
     component: Layout,
     redirect: '/c/c1',
     meta: {
@@ -84,6 +87,31 @@ const privateRoutes = [
           icon: 'el-icon-s-home'
         },
         component: () => import('@/views/c/C-2.vue')
+      }
+    ]
+  },
+  {
+    path: '/d',
+    name: 'd',
+    component: Layout,
+    children: [
+      {
+        path: '/d/d1',
+        meta: {
+          title: 'd1',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/components-use-show/UseBreadcrumb.vue'),
+        children: [
+          {
+            path: '/d/d1/d1-1',
+            name: 'A1-1',
+            meta: {
+              activeMenu: '/d/d1'
+            },
+            component: () => import('@/views/a/A-1-1.vue')
+          }
+        ]
       }
     ]
   }

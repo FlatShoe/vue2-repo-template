@@ -1,6 +1,20 @@
+$submenuPadding: 0 16px;
+$menuItemPadding: 0 44px;
+$submenuBg: rgba(167, 201, 225, .4);
+$menuItemBg: rgba(167, 201, 225, .2);
+
 .sidebar {
   display: flex;
   overflow: hidden;
+  .el-submenu__title,
+  .el-menu-item {
+    padding: 0 !important; 
+  }
+  .el-menu-item:focus, .el-menu-item:hover,
+  .el-submenu__title:focus, .el-submenu__title:hover {
+    background-color: transparent;
+  }
+  
   .menu-main {
     flex: 1;
     display: flex;
@@ -23,5 +37,23 @@
         overflow: hidden;
       }
     }
+  }
+  .el-submenu {
+    &.is-active {
+      background: $submenuBg;
+    }
+    .menu-item-wrapper {
+      padding: $menuItemPadding;
+    }
+  }
+  .submenu-wrapper {
+    padding: $submenuPadding;
+  }
+  .menu-item-wrapper {
+    padding: $submenuPadding;
+  }
+  .router-link-active,
+  .router-link-active.menu-item-title {
+    color: #409EFF !important;
   }
 }

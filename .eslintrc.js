@@ -65,6 +65,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'operator-linebreak': 0,
     'no-unused-expressions': 0,
-    'class-methods-use-this': 0
+    'class-methods-use-this': 0,
+    'no-continue': 0
   }
 }

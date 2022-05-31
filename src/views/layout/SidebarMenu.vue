@@ -3,7 +3,14 @@
 * @Date 2022-05-31
 -->
 <template>
-  <el-menu uniqueOpened router :collapse="collapse" :default-active="defaultActive">
+  <el-menu
+    ref="menuRef"
+    uniqueOpened
+    router
+    :collapse="collapse"
+    :default-active="defaultActive"
+    @open="open"
+  >
     <sidebar-menu-item v-for="route in menus" :key="route.path" :route="route" />
   </el-menu>
 </template>
@@ -18,13 +25,24 @@ export default {
   },
   computed: {
     menus() {
-      return routeMenus.filterRoutes(this.$router.options.routes)
+      return routeMenus.generateMenus(this.$router.options.routes)
+    },
+    defaultActive() {
+      const {path, meta} = this.$route
+      if (meta && meta.activeMenu) {
+        return meta.activeMenu
+      }
+      return path
     }
   },
   data() {
     return {
-      collapse: false,
-      defaultActive: ''
+      collapse: false
+    }
+  },
+  methods: {
+    open(path) {
+      this.$router.push(path).catch(err => err)
     }
   }
 }

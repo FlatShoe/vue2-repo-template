@@ -3,15 +3,12 @@
 * @Date
 -->
 <template>
-  <div>
-    A-1
-    <router-view></router-view>
-  </div>
+  <div>12312321</div>
 </template>
 
 <script>
 export default {
-  name: 'A1'
+  name: ''
 }
 </script>
 

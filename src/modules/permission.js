@@ -8,7 +8,7 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === LOGINPATH) {
       next({path: '/'})
     } else {
-      if (!store.getters.userInfo) {
+      if (!store.getters.hasUserInfo) {
         await store.dispatch('system/getUserInfo')
       }
       next()

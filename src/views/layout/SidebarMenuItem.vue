@@ -5,12 +5,22 @@
 <template>
   <el-submenu v-if="route.children && route.children.length > 0" :index="route.path">
     <template slot="title">
-      <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+      <!-- <router-link class="submenu-router-link" :to="route.path" tag="div">
+        <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+      </router-link> -->
+      <div class="submenu-wrapper">
+        <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+      </div>
     </template>
     <sidebar-menu-item v-for="item in route.children" :key="item.path" :route="item" />
   </el-submenu>
   <el-menu-item v-else :index="route.path">
-    <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+    <!-- <router-link class="menu-item-router-link" :to="route.path" tag="div">
+      <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+    </router-link> -->
+    <div class="menu-item-wrapper">
+      <menu-item :icon="route.meta.icon" :title="route.meta.title"></menu-item>
+    </div>
   </el-menu-item>
 </template>
 
