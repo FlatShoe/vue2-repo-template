@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import {
+  Menu,
+  Submenu,
+  MenuItem,
   Row,
   Col,
   Button,
@@ -32,6 +35,9 @@ import {
   Avatar
 } from 'element-ui'
 
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
 Vue.use(Col)
 Vue.use(Row)
 Vue.use(Button)

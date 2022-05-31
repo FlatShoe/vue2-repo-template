@@ -1,56 +1,97 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import publicRoutes from './publicRoutes'
-const routes = [
+import Layout from '@/views/layout/Layout.vue'
+
+const privateRoutes = [
   {
-    path: '*',
-    component: () => import(/* webpackChunkName: "errors-404" */ '@/views/errors/404')
+    path: '/a',
+    component: Layout,
+    redirect: '/a/a1/',
+    meta: {
+      title: 'a',
+      icon: 'el-icon-s-home'
+    },
+    children: [
+      {
+        path: '/a/a1',
+        name: 'A1',
+        meta: {
+          title: 'a1',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/a/A-1.vue')
+      },
+      {
+        path: '/a/a2',
+        name: 'A2',
+        meta: {
+          title: 'a2',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/a/A-2.vue')
+      }
+    ]
   },
   {
-    path: '/components-use-data-table',
-    component: () => import('@/views/components-use-show/UseDataTable.vue')
+    path: '/b',
+    component: Layout,
+    redirect: '/b/b1',
+    meta: {
+      title: 'b',
+      icon: 'el-icon-s-home'
+    },
+    children: [
+      {
+        path: '/b/b1',
+        meta: {
+          title: 'b1',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/b/B-1.vue')
+      },
+      {
+        path: '/b/b2',
+        meta: {
+          title: 'b2',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/b/B-2.vue')
+      }
+    ]
   },
   {
-    path: '/components-use-breadcrumb',
-    component: () => import('@/views/components-use-show/UseBreadcrumb.vue')
-  },
-  {
-    path: '/components-use-form-dialog',
-    component: () => import('@/views/components-use-show/UseFormDialog.vue')
-  },
-  {
-    path: '/components-use-left-right-page',
-    component: () => import('@/views/components-use-show/UseLeftRightPage.vue')
-  },
-  {
-    path: '/components-use-scroll-view',
-    component: () => import('@/views/components-use-show/UseScrollView.vue')
-  },
-  {
-    path: '/components-use-page-card',
-    component: () => import('@/views/components-use-show/UsePageCard.vue')
-  },
-  {
-    path: '/components-use-concision-form',
-    component: () => import('@/views/components-use-show/UseConcisionForm.vue')
-  },
-  {
-    path: '/login',
-    component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
-  },
-  {
-    path: '/',
-    component: () => import('@/views/layout/Layout.vue')
-  },
-  {
-    path: '/home',
-    component: () => import('@/views/Home')
+    path: '/c',
+    component: Layout,
+    redirect: '/c/c1',
+    meta: {
+      title: 'c',
+      icon: 'el-icon-s-home'
+    },
+    children: [
+      {
+        path: '/c/c1',
+        meta: {
+          title: 'c1',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/c/C-1.vue')
+      },
+      {
+        path: '/c/c2',
+        meta: {
+          title: 'c2',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('@/views/c/C-2.vue')
+      }
+    ]
   }
 ]
 
 Vue.use(VueRouter)
 const router = new VueRouter({
-  routes: publicRoutes
+  routes: [...publicRoutes, ...privateRoutes]
 })
 
 export default router
