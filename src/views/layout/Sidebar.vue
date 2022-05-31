@@ -4,7 +4,9 @@
 -->
 <template>
   <div class="sidebar">
-    <div class="logo-container"></div>
+    <div class="logo-container">
+      <h1>vue2-repo-template</h1>
+    </div>
     <div class="menu-main">
       <scroll-view style="height: 100%">
         <sidebar-menu class="sidebar-menu" />

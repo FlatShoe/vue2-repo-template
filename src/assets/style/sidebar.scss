@@ -19,6 +19,7 @@ $textActiveColor: #4F93F7;
 
 .sidebar {
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   .el-submenu__title,
   .el-menu-item {
@@ -51,7 +52,17 @@ $textActiveColor: #4F93F7;
   .el-menu--collapse > div > .el-menu-item > .menu-item-wrapper > .menu-item > span {
     display: none;
   }
-
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 16px 0;
+    height: 44px;
+    color: $textActiveColor;
+    font-weight: 700;
+    font-size: 18px;
+    white-space: nowrap;
+  }
   .menu-main {
     flex: 1;
     display: flex;
