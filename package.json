@@ -20,6 +20,7 @@
     "chalk": "4.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^9.2.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",

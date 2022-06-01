@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const resolve = dir => {
   return path.join(__dirname, '..', dir)
@@ -112,7 +113,18 @@ module.exports = (env = 'development') => {
         template: 'public/index.html'
       }),
       new CleanWebpackPlugin(),
-      new VueLoaderPlugin()
+      new VueLoaderPlugin(),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: 'public',
+            globOptions: {
+              ignore: ['**/.DS_Store', '**/index.html']
+            },
+            to: 'public'
+          }
+        ]
+      })
     ],
     resolve: {
       alias: {
