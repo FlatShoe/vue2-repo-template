@@ -15,7 +15,7 @@ export default {
   computed: {
     ...mapGetters(['collapse']),
     icon() {
-      return this.collapse ? 'menu-open' : 'menu-close'
+      return !this.collapse ? 'menu-open' : 'menu-close'
     }
   },
   methods: {

@@ -170,3 +170,20 @@ $textActiveColor: #4f93f7;
     }
   }
 }
+// 弹出面板样式
+.el-menu--vertical {
+  .menu-item-icon-not-active {
+    display: inline-block;
+  }
+  .menu-item-icon-active {
+    display: none;
+  }
+  .el-menu-item.is-active {
+    .menu-item-icon-not-active {
+      display: none;
+    }
+    .menu-item-icon-active {
+      display: inline-block;
+    }
+  }
+}
