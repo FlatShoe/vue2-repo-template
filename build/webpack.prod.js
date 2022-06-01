@@ -5,8 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
-module.exports = merge(base('production'), {
+module.exports = merge(base(), {
   mode: 'production',
   optimization: {
     realContentHash: false,

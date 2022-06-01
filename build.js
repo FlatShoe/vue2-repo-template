@@ -1,4 +1,5 @@
-// 'use strcit'
+'use strcit'
+process.env.NODE_ENV = process.argv[2] || 'production'
 const chalk = require('chalk')
 const webpack = require('webpack')
 const webpackConfig = require('./build/webpack.prod')

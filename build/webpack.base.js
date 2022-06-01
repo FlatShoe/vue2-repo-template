@@ -1,5 +1,5 @@
 const path = require('path')
-
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -9,10 +9,21 @@ const CopyPlugin = require('copy-webpack-plugin')
 const resolve = dir => {
   return path.join(__dirname, '..', dir)
 }
+const envMap = {
+  production: 'prod',
+  development: 'dev',
+  test: 'test'
+}
+let env
+if (envMap[process.env.NODE_ENV]) {
+  env = require(resolve(`configs/${envMap[process.env.NODE_ENV]}.env.js`))
+} else {
+  env = require(resolve('configs/dev.env.js'))
+}
 
-module.exports = (env = 'development') => {
+module.exports = () => {
   const styleLoader =
-    env === 'production'
+    env.NODE_ENV === 'production'
       ? {
           loader: MiniCssExtractPlugin.loader,
           options: {
@@ -124,6 +135,9 @@ module.exports = (env = 'development') => {
             to: 'public'
           }
         ]
+      }),
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(env)
       })
     ],
     resolve: {
