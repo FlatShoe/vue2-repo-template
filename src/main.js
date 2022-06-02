@@ -7,6 +7,7 @@ import './global'
 import './modules/permission'
 import './plugins/element.js'
 import './utils/rem.js'
+import 'nprogress/nprogress.css'
 import './assets/style/index.scss'
 import 'element-ui/lib/theme-chalk/index.css'
 
