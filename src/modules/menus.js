@@ -13,7 +13,7 @@ class RouteMenus {
         ...route,
         children: []
       }
-      if (route.meta.icon && route.meta.title) {
+      if ((route.meta.icon && route.meta.title) || route.meta.primary) {
         result.push(tempRoute)
       }
       if (!_.isEmpty(route.children)) {

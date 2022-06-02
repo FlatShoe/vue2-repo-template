@@ -45,7 +45,6 @@ $header-height: 70px;
   .layout-sidebar {
     transition: flex $sidebarDurtion;
     flex: 0 0 $sidebar-width;
-    background-color: $themeBg;
     &.hide {
       flex: 0 0 $sidebar-hide-width;
     }
