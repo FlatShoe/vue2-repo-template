@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue'
-import HeaderBar from './HeaderBar.vue'
-import AppMain from './AppMain.vue'
+import Sidebar from './side/Sidebar.vue'
+import HeaderBar from './header/HeaderBar.vue'
+import AppMain from './main/AppMain.vue'
 import {mapGetters} from 'vuex'
 export default {
   name: 'Layout',
