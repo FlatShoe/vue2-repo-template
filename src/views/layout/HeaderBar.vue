@@ -64,12 +64,14 @@ export default {
   height: 100%;
   box-sizing: border-box;
   padding: 0 10px;
-
+  .header-start,
   .header-end {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     height: 100%;
+  }
+
+  .header-end {
     .user-control {
       user-select: none;
       height: fit-content;

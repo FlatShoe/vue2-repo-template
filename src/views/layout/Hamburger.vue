@@ -4,7 +4,7 @@
 -->
 <template>
   <div class="hamburger" @click="change">
-    <svg-icon :icon="icon"></svg-icon>
+    <img :src="require(`@/assets/images/${icon}.png`)" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   computed: {
     ...mapGetters(['collapse']),
     icon() {
-      return !this.collapse ? 'menu-open' : 'menu-close'
+      return !this.collapse ? 'hamburger-open' : 'hamburger-close'
     }
   },
   methods: {
@@ -30,5 +30,10 @@ export default {
 <style lang="scss" scoped>
 .hamburger {
   cursor: pointer;
+  img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
 }
 </style>
