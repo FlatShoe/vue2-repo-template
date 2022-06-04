@@ -79,7 +79,7 @@ export default {
   }
   .page-search-select {
     font-size: 18px;
-    transition: width 0.2s;
+    transition: width 0.4s;
     width: 0;
     overflow: hidden;
     background: transparent;
@@ -89,8 +89,7 @@ export default {
   }
   &.search-input-show {
     .page-search-select {
-      width: 210px;
-      margin-left: 10px;
+      width: 180px;
     }
   }
 }
