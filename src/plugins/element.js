@@ -4,6 +4,7 @@ import {
   Menu,
   Submenu,
   MenuItem,
+  MenuItemGroup,
   Row,
   Col,
   Button,
@@ -39,6 +40,7 @@ import {
 Vue.use(Menu)
 Vue.use(Submenu)
 Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
 Vue.use(Col)
 Vue.use(Row)
 Vue.use(Button)
