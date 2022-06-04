@@ -11,7 +11,10 @@
     </div>
 
     <div class="header-end">
-      <div class="screen-full-control">
+      <div class="page-search-control control-parts">
+        <page-search></page-search>
+      </div>
+      <div class="screen-full-control control-parts">
         <screen-full></screen-full>
       </div>
       <div class="user-control">
@@ -35,11 +38,13 @@
 <script>
 import {mapMutations} from 'vuex'
 import Hamburger from './Hamburger.vue'
+import PageSearch from './PageSearch.vue'
 import ScreenFull from './ScreenFull.vue'
 export default {
   name: 'Header',
   components: {
     Hamburger,
+    PageSearch,
     ScreenFull
   },
   methods: {
@@ -72,10 +77,12 @@ export default {
   }
 
   .header-end {
+    .control-parts {
+      margin-right: 10px;
+    }
     .user-control {
       user-select: none;
       height: fit-content;
-      margin-left: 10px;
       .dropdown-avatar {
         cursor: pointer;
         .avatar-wrapper {
