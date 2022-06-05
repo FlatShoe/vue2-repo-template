@@ -101,7 +101,7 @@ export default {
           path =
             index === 0
               ? this.historyTags[index + 1].fullPath
-              : this.historyTags[this.historyTags.length - 2].fullPath
+              : this.historyTags[index - 1].fullPath
         }
       } else if (type === 'left') {
         path = routeIndex < index ? fullPath : ''
@@ -140,7 +140,6 @@ export default {
      * @param {String} fullPath 路径
      */
     handleEdit(fullPath) {
-      if (this.historyTags.length === 1) return
       const index = this.historyTags.findIndex(tag => tag.fullPath === fullPath)
       if (index > -1) {
         const temp = {
