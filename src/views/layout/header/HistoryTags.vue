@@ -6,7 +6,7 @@
   <div class="history-tags">
     <el-tabs type="card" closable v-model="tagValue" @edit="handleEdit">
       <el-tab-pane :key="item.name" v-for="(item, index) in historyTags" :name="item.name">
-        <span slot="label" @contextmenu.prevent="openMenu($event, index)">
+        <span slot="label" @contextmenu.prevent="handleOpenMenu($event, index)">
           <router-link class="tag-router" :to="{path: item.fullPath}">
             <i class="route-line route-left-line" v-if="index !== 0"></i>
             {{ item.title }}
@@ -14,7 +14,7 @@
         </span>
       </el-tab-pane>
     </el-tabs>
-    <context-menu :menuItems="menuItems" :offset="offset"></context-menu>
+    <context-menu v-show="contextMenuShow" :menuItems="menuItems" :offset="offset"></context-menu>
   </div>
 </template>
 
@@ -53,6 +53,7 @@ export default {
         left: '0px'
       },
       tagValue: '',
+      contextMenuShow: false,
       menuItems
     }
   },
@@ -93,9 +94,16 @@ export default {
     /**
      * @Description 打开右键菜单
      */
-    openMenu(e, index) {
+    handleOpenMenu(e, index) {
       const {x, y} = e
       this.offset = {left: x + 'px', top: y + 'px'}
+      this.contextMenuShow = true
+    },
+    /**
+     * @Description 关闭右键菜单
+     */
+    handleCloseMenu() {
+      this.contextMenuShow = false
     }
   },
   watch: {
@@ -105,6 +113,10 @@ export default {
         this.setHistoryTags(this.generateTag(to))
       },
       immediate: true
+    },
+    contextMenuShow(isShow) {
+      if (isShow) return document.addEventListener('click', this.handleCloseMenu)
+      document.removeEventListener('click', this.handleCloseMenu)
     }
   }
 }
