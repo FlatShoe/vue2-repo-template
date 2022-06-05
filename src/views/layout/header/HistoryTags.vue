@@ -4,9 +4,9 @@
 -->
 <template>
   <div class="history-tags">
-    <el-tabs type="card" closable v-model="tagValue" @edit="handleEdit">
-      <el-tab-pane :key="item.name" v-for="(item, index) in historyTags" :name="item.name">
-        <span slot="label" @contextmenu.prevent="handleOpenMenu($event, index)">
+    <el-tabs type="card" :closable="historyTags.length > 1" v-model="tagValue" @edit="handleEdit">
+      <el-tab-pane :key="item.name" v-for="(item, index) in historyTags" :name="item.fullPath">
+        <span slot="label" @contextmenu.prevent="handleOpenMenu($event, item.fullPath, index)">
           <router-link class="tag-router" :to="{path: item.fullPath}">
             <i class="route-line route-left-line" v-if="index !== 0"></i>
             {{ item.title }}
@@ -14,7 +14,15 @@
         </span>
       </el-tab-pane>
     </el-tabs>
-    <context-menu v-show="contextMenuShow" :menuItems="menuItems" :offset="offset"></context-menu>
+    <context-menu
+      v-show="contextMenuShow"
+      :menuItems="menuItems"
+      :offset="offset"
+      @emitRefresh="$router.go(0)"
+      @emitCloseLeft="handleCloseLeft"
+      @emitCloseRight="handleCloseRight"
+      @emitCloseOther="handleCloseOther"
+    ></context-menu>
   </div>
 </template>
 
@@ -28,6 +36,11 @@ const menuItems = [
     label: '刷新',
     name: 'refresh',
     emit: 'emitRefresh'
+  },
+  {
+    label: '关闭左侧',
+    name: 'closeLeft',
+    emit: 'emitCloseLeft'
   },
   {
     label: '关闭右侧',
@@ -52,16 +65,53 @@ export default {
         top: '0px',
         left: '0px'
       },
+      contextPath: '',
+      contextIndex: -1,
       tagValue: '',
-      contextMenuShow: false,
-      menuItems
+      contextMenuShow: false
     }
   },
   computed: {
-    ...mapGetters(['historyTags'])
+    ...mapGetters(['historyTags']),
+    menuItems() {
+      if (this.historyTags.length === 1) {
+        return [menuItems[0]]
+      }
+      if (this.contextIndex === 0) {
+        return [menuItems[0], menuItems[2], menuItems[3]]
+      } else if (this.contextIndex === this.historyTags.length - 1) {
+        return [menuItems[0], menuItems[1], menuItems[3]]
+      }
+      return menuItems
+    }
   },
   methods: {
-    ...mapMutations('app', ['setHistoryTags']),
+    ...mapMutations('app', ['setHistoryTags', 'removeTags']),
+    /**
+     * @description 计算需要将要跳转的路径
+     * @param {Object} params
+     */
+    computedPath(params) {
+      const {type, fullPath, index} = params
+      let path
+      const routeFullPath = this.$route.fullPath
+      const routeIndex = this.historyTags.findIndex(item => item.fullPath === routeFullPath)
+      if (type === 'current') {
+        if (fullPath === routeFullPath) {
+          path =
+            index === 0
+              ? this.historyTags[index + 1].fullPath
+              : this.historyTags[this.historyTags.length - 2].fullPath
+        }
+      } else if (type === 'left') {
+        path = routeIndex < index ? fullPath : ''
+      } else if (type === 'right') {
+        path = routeIndex > index ? fullPath : ''
+      } else if (type === 'other') {
+        path = fullPath !== routeFullPath ? fullPath : ''
+      }
+      return path
+    },
     /**
      * @Description 生成路由标签
      * @param {Object} route 路由
@@ -87,16 +137,31 @@ export default {
     },
     /**
      * @Description 操作编辑
+     * @param {String} fullPath 路径
      */
-    handleEdit(tag) {
-      console.log(tag)
+    handleEdit(fullPath) {
+      if (this.historyTags.length === 1) return
+      const index = this.historyTags.findIndex(tag => tag.fullPath === fullPath)
+      if (index > -1) {
+        const temp = {
+          type: 'current',
+          index
+        }
+        const to = this.computedPath({...temp, fullPath})
+        this.removeTags({
+          ...temp,
+          to
+        })
+      }
     },
     /**
      * @Description 打开右键菜单
      */
-    handleOpenMenu(e, index) {
+    handleOpenMenu(e, path, index) {
       const {x, y} = e
       this.offset = {left: x + 'px', top: y + 'px'}
+      this.contextPath = path
+      this.contextIndex = index
       this.contextMenuShow = true
     },
     /**
@@ -104,6 +169,48 @@ export default {
      */
     handleCloseMenu() {
       this.contextMenuShow = false
+    },
+    /**
+     * @Description 关闭左侧标签
+     */
+    handleCloseLeft() {
+      const temp = {
+        type: 'left',
+        index: this.contextIndex
+      }
+      const to = this.computedPath({...temp, fullPath: this.contextPath})
+      this.removeTags({
+        ...temp,
+        to
+      })
+    },
+    /**
+     * @Description 关闭右侧标签
+     */
+    handleCloseRight() {
+      const temp = {
+        type: 'right',
+        index: this.contextIndex
+      }
+      const to = this.computedPath({...temp, fullPath: this.contextPath})
+      this.removeTags({
+        ...temp,
+        to
+      })
+    },
+    /**
+     * @Description 关闭其他标签
+     */
+    handleCloseOther() {
+      const temp = {
+        type: 'other',
+        index: this.contextIndex
+      }
+      const to = this.computedPath({...temp, fullPath: this.contextPath})
+      this.removeTags({
+        ...temp,
+        to
+      })
     }
   },
   watch: {
@@ -175,6 +282,7 @@ export default {
   a {
     text-decoration: none;
   }
+  user-select: none;
   height: 100%;
   overflow: hidden;
   .tag-router {
