@@ -4,7 +4,10 @@
 -->
 <template>
   <div class="page">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
@@ -13,5 +16,3 @@ export default {
   name: 'AppMain'
 }
 </script>
-
-<style scoped></style>
