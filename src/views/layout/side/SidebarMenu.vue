@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import routeMenus from '@/modules/menus'
+import routeMenus from '@/modules/routeMenus'
 import SidebarMenuItem from './SidebarMenuItem.vue'
 import {mapGetters} from 'vuex'
 export default {

@@ -22,6 +22,27 @@ class RouteMenus {
     }
     return result
   }
+  generateRoutes(routes, relevanceTitle = []) {
+    let result = []
+    routes.forEach(route => {
+      const data = {
+        path: route.path,
+        title: [...relevanceTitle]
+      }
+      const reg = /.*\/:.*/
+      if (route.meta && route.meta.title && !reg.exec(route.path)) {
+        data.title = [...data.title, route.meta.title]
+        result.push(data)
+      }
+      if (!_.isEmpty(route.children)) {
+        const tempRoutes = this.generateRoutes(route.children, data.title)
+        if (tempRoutes.length > 0) {
+          result = [...result, ...tempRoutes]
+        }
+      }
+    })
+    return result
+  }
 }
 
 export default new RouteMenus()
