@@ -1,6 +1,6 @@
 import {login, getUserInfo} from '@/api/system'
 import {sessionStorage} from '@/modules/storage'
-import {LOGINPATH, TOKEN} from '@/constant/index'
+import {LOGIN_PATH, TOKEN} from '@/constant/index'
 import router from '@/router'
 
 export default {
@@ -21,7 +21,7 @@ export default {
       state.token = ''
       state.userInfo = {}
       sessionStorage.removeAllItem()
-      router.push(LOGINPATH)
+      router.push(LOGIN_PATH)
     }
   },
   actions: {

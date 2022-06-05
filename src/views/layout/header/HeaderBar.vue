@@ -9,7 +9,11 @@
         <hamburger />
       </div>
     </div>
-
+    <div class="header-center">
+      <div class="history-tags-control">
+        <history-tags />
+      </div>
+    </div>
     <div class="header-end">
       <div class="page-search-control control-parts">
         <page-search></page-search>
@@ -38,12 +42,14 @@
 <script>
 import {mapMutations} from 'vuex'
 import Hamburger from './Hamburger.vue'
+import HistoryTags from './HistoryTags.vue'
 import PageSearch from './PageSearch.vue'
 import ScreenFull from './ScreenFull.vue'
 export default {
   name: 'Header',
   components: {
     Hamburger,
+    HistoryTags,
     PageSearch,
     ScreenFull
   },
@@ -70,10 +76,16 @@ export default {
   box-sizing: border-box;
   padding: 0 10px;
   .header-start,
+  .header-center,
   .header-end {
     display: flex;
     align-items: center;
     height: 100%;
+    box-sizing: border-box;
+  }
+  .header-center {
+    flex: 1;
+    padding: 0 10px;
   }
 
   .header-end {

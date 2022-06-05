@@ -1,13 +1,13 @@
 import NProgress from 'nprogress'
 import router from '@/router'
 import store from '@/store'
-import {LOGINPATH} from '@/constant/index'
+import {LOGIN_PATH} from '@/constant/index'
 import whiteList from './whiteList'
 NProgress.configure({showSpinner: false})
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
   if (store.getters.token) {
-    if (to.path === LOGINPATH) {
+    if (to.path === LOGIN_PATH) {
       next({path: '/'})
     } else {
       if (!store.getters.hasUserInfo) {
@@ -19,7 +19,7 @@ router.beforeEach(async (to, from, next) => {
     if (whiteList.includes(to.path)) {
       next()
     } else {
-      next(LOGINPATH)
+      next(LOGIN_PATH)
     }
   }
 })

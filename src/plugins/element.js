@@ -34,7 +34,9 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Avatar
+  Avatar,
+  Tabs,
+  TabPane
 } from 'element-ui'
 
 Vue.use(Menu)
@@ -71,3 +73,5 @@ Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 Vue.use(Avatar)
+Vue.use(Tabs)
+Vue.use(TabPane)
