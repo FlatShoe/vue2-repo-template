@@ -75,6 +75,7 @@ export default {
   height: 100%;
   box-sizing: border-box;
   padding: 0 10px;
+  overflow: hidden;
   .header-start,
   .header-center,
   .header-end {
@@ -82,10 +83,14 @@ export default {
     align-items: center;
     height: 100%;
     box-sizing: border-box;
+    overflow: hidden;
   }
   .header-center {
     flex: 1;
-    padding: 0 10px;
+    margin: 0 10px;
+    .history-tags-control {
+      overflow: hidden;
+    }
   }
 
   .header-end {
