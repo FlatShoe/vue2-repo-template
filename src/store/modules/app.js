@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     sidebarStatus: true,
-    historyTags: []
+    historyTags: sessionStorage.get(HISTORY_TAGS) || []
   },
   mutations: {
     setSidebarStatus(state, status) {

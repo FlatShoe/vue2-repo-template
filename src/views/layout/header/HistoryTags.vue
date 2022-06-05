@@ -4,15 +4,10 @@
 -->
 <template>
   <div class="history-tags">
-    <el-tabs type="card" v-model="tagValue" @edit="handleEdit" closable @tab-click="handleClick">
-      <el-tab-pane
-        :key="item.name"
-        v-for="(item, index) in historyTags"
-        :name="item.title"
-        :label="item.title"
-      >
+    <el-tabs type="card" closable v-model="tagValue" @edit="handleEdit">
+      <el-tab-pane :key="item.name" v-for="(item, index) in historyTags" :name="item.name">
         <span slot="label">
-          <router-link :to="{name: item.name}" class="there-router">
+          <router-link class="tag-router" :to="{path: item.fullPath}">
             <i class="route-line route-left-line" v-if="index !== 0"></i>
             {{ item.title }}
           </router-link>
@@ -60,8 +55,12 @@ export default {
         query
       }
     },
-    handleEdit() {},
-    handleClick() {}
+    /**
+     * @Description 操作编辑
+     */
+    handleEdit(tag) {
+      console.log(tag)
+    }
   },
   watch: {
     $route: {
@@ -75,4 +74,88 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.history-tags {
+  .el-tabs__header {
+    margin-bottom: 0;
+  }
+  .el-tabs__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    border: none !important;
+    padding: 0 !important;
+    span {
+      color: #fff;
+      a {
+        color: #fff !important;
+        background-color: rgba(36, 49, 68, 0.3);
+        padding: 0 20px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+      }
+      &:first-child {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .el-icon-close {
+      position: absolute !important;
+      top: 50% !important;
+      right: 15px !important;
+      transform: translateY(-50%);
+      font-size: 16px !important;
+      width: 14px !important;
+    }
+  }
+  .el-tabs__nav {
+    display: flex;
+    border: none !important;
+  }
+  .el-tabs__header {
+    border: none !important;
+  }
+  .el-tabs__nav-wrap {
+    margin: 0;
+  }
+}
+</style>
+<style lang="scss" scoped>
+.history-tags {
+  a {
+    text-decoration: none;
+  }
+  height: 100%;
+  overflow: hidden;
+  .tag-router {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 232px;
+    height: 100%;
+    box-sizing: border-box;
+    background: rgba(36, 49, 68, 0.1);
+    border-radius: 0;
+    &:hover {
+      background: rgba(36, 49, 68, 0.3) !important;
+    }
+    .route-line {
+      position: absolute;
+      width: 1px;
+      height: 28px;
+      &.route-left-line {
+        left: -1px;
+        background-color: #fff;
+      }
+    }
+    &.router-link-active {
+      background: rgba(36, 49, 68, 0.3);
+      .route-left-line {
+        background-color: transparent;
+      }
+    }
+  }
+}
+</style>
