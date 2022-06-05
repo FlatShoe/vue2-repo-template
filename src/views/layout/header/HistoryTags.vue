@@ -6,7 +6,7 @@
   <div class="history-tags">
     <el-tabs type="card" closable v-model="tagValue" @edit="handleEdit">
       <el-tab-pane :key="item.name" v-for="(item, index) in historyTags" :name="item.name">
-        <span slot="label">
+        <span slot="label" @contextmenu.prevent="openMenu($event, index)">
           <router-link class="tag-router" :to="{path: item.fullPath}">
             <i class="route-line route-left-line" v-if="index !== 0"></i>
             {{ item.title }}
@@ -14,17 +14,46 @@
         </span>
       </el-tab-pane>
     </el-tabs>
+    <context-menu :menuItems="menuItems" :offset="offset"></context-menu>
   </div>
 </template>
 
 <script>
 import {mapGetters, mapMutations} from 'vuex'
 import whiteList from '@/modules/whiteList'
+import ContextMenu from '@/components/ContextMenu'
+
+const menuItems = [
+  {
+    label: '刷新',
+    name: 'refresh',
+    emit: 'emitRefresh'
+  },
+  {
+    label: '关闭右侧',
+    name: 'closeRight',
+    emit: 'emitCloseRight'
+  },
+  {
+    label: '关闭其他',
+    name: 'closeOther',
+    emit: 'emitCloseOther'
+  }
+]
+
 export default {
   name: 'HistoryTags',
+  components: {
+    ContextMenu
+  },
   data() {
     return {
-      tagValue: ''
+      offset: {
+        top: '0px',
+        left: '0px'
+      },
+      tagValue: '',
+      menuItems
     }
   },
   computed: {
@@ -60,6 +89,13 @@ export default {
      */
     handleEdit(tag) {
       console.log(tag)
+    },
+    /**
+     * @Description 打开右键菜单
+     */
+    openMenu(e, index) {
+      const {x, y} = e
+      this.offset = {left: x + 'px', top: y + 'px'}
     }
   },
   watch: {
