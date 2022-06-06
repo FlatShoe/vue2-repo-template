@@ -78,9 +78,9 @@ export default {
         return [menuItems[0]]
       }
       if (this.contextIndex === 0) {
-        return [menuItems[0], menuItems[2], menuItems[3]]
+        return [menuItems[0], menuItems[2]]
       } else if (this.contextIndex === this.historyTags.length - 1) {
-        return [menuItems[0], menuItems[1], menuItems[3]]
+        return [menuItems[0], menuItems[1]]
       }
       return menuItems
     }
@@ -99,7 +99,7 @@ export default {
       if (type === 'current') {
         if (fullPath === routeFullPath) {
           path =
-            index === 0
+            index === 0 || index !== this.historyTags.length - 1
               ? this.historyTags[index + 1].fullPath
               : this.historyTags[index - 1].fullPath
         }
