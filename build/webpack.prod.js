@@ -77,6 +77,7 @@ module.exports = merge(base(), {
   externals: {
     lodash: '_',
     dayjs: 'dayjs',
-    axios: 'axios'
+    axios: 'axios',
+    echarts: 'echarts'
   }
 })

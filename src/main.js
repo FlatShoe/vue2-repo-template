@@ -9,6 +9,7 @@ import './plugins/element.js'
 import './utils/rem.js'
 import 'nprogress/nprogress.css'
 import './assets/style/index.scss'
+import * as echarts from 'echarts'
 
 if (process.env.NODE_ENV === 'development') {
   require('./mock')
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 Vue.use(Vuebar)
 
 Vue.config.productionTip = false
-
+Vue.prototype.$echarts = echarts
 new Vue({
   render: h => h(App),
   router,
