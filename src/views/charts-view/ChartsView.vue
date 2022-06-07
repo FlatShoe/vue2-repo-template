@@ -14,12 +14,8 @@
 </template>
 
 <script>
-import Chart from '@/components/charts/Chart.js'
 export default {
   name: 'ChartsView',
-  components: {
-    Chart
-  },
   data() {
     return {
       barLoading: false,
