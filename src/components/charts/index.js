@@ -89,6 +89,20 @@ export default {
         if (val && this.echarts) this.echarts.setOption(val)
       },
       deep: true
+    },
+    width: {
+      handler(val) {
+        this.$nextTick(() => {
+          this.echartsResize()
+        })
+      }
+    },
+    height: {
+      handler(val) {
+        this.$nextTick(() => {
+          this.echartsResize()
+        })
+      }
     }
   },
   created() {

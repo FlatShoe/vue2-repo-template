@@ -4,10 +4,15 @@
 -->
 <template>
   <div class="charts-view">
-    <div class="view-bar">
-      <chart height="100%" :loading="barLoading" :option="barOption"></chart>
+    <div class="charts-view-container">
+      <div class="cheart-view-item">
+        <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+      </div>
+      <div class="cheart-view-item" style="background-color: #fff">
+        <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
+      </div>
     </div>
-    <div class="view-pie">
+    <div class="cheart-view-item" style="height: 500px">
       <chart height="100%" :loading="pieLoading" :option="pieOption" />
     </div>
   </div>
@@ -106,8 +111,15 @@ export default {
 
 <style lang="scss" scoped>
 .charts-view {
-  & > div {
-    height: 500px;
+  overflow-y: auto;
+  .charts-view-container {
+    display: flex;
+    overflow: hidden;
+    .cheart-view-item {
+      width: 50%;
+      height: 500px;
+      background-color: pink;
+    }
   }
 }
 </style>

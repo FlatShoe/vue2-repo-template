@@ -8,4 +8,4 @@ const setRem = () => {
 setRem()
 window.onresize = _.throttle(() => {
   setRem()
-}, 300)
+}, 200)
