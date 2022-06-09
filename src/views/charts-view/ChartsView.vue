@@ -4,17 +4,23 @@
 -->
 <template>
   <div class="charts-view">
-    <div class="charts-view-container">
-      <div class="cheart-view-item">
-        <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
-      </div>
-      <div class="cheart-view-item" style="background-color: #fff">
-        <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
-      </div>
-    </div>
-    <div class="cheart-view-item" style="height: 500px">
-      <chart height="100%" :loading="pieLoading" :option="pieOption" />
-    </div>
+    <el-row :gutter="20">
+      <el-col :span="8">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class="cheart-view-item">
+          <chart height="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -111,15 +117,12 @@ export default {
 
 <style lang="scss" scoped>
 .charts-view {
+  overflow-x: hidden;
   overflow-y: auto;
-  .charts-view-container {
-    display: flex;
-    overflow: hidden;
-    .cheart-view-item {
-      width: 50%;
-      height: 500px;
-      background-color: pink;
-    }
+  .cheart-view-item {
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
   }
 }
 </style>
