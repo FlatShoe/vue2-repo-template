@@ -5,9 +5,19 @@
 <template>
   <div class="charts-view">
     <el-row :gutter="20">
-      <el-col :span="8">
+      <el-col :span="24">
         <div class="cheart-view-item">
           <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="cheart-view-item">
+          <chart height="100%" :loading="pieLoading" :option="pieOption" />
         </div>
       </el-col>
       <el-col :span="8">
@@ -18,6 +28,61 @@
       <el-col :span="8">
         <div class="cheart-view-item">
           <chart height="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cheart-view-item">
+          <chart height="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="cheart-view-item">
+          <chart height="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="barLoading" :option="barOption"></chart>
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="cheart-view-item">
+          <chart height="100%" :loading="pieLoading" :option="pieOption" />
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="cheart-view-item">
+          <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
         </div>
       </el-col>
     </el-row>
@@ -123,6 +188,7 @@ export default {
     width: 100%;
     height: 500px;
     background-color: #fff;
+    margin-bottom: 20px;
   }
 }
 </style>
