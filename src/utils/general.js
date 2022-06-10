@@ -1,4 +1,4 @@
-// 获取网络资源名字并进行编码
+// 获取网络资源名字
 export const getResourceName = url => {
   const REG = /^.*[\\\/]/
   return decodeURIComponent(url.replace(REG, ''))
