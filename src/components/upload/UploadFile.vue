@@ -84,8 +84,8 @@ export default {
     },
     // 文件大小限制
     fileSize: {
-      type: Number | null,
-      default: 2
+      type: Number,
+      default: null
     }
   },
   computed: {
@@ -132,7 +132,6 @@ export default {
       this.$message.warning(`当前限制最多选择上传 ${this.limit} 个文件`)
     },
     beforeUpload(file) {
-      console.log(this.fileSize)
       if (this.fileType.length) {
         if (this.fileType.include(getFIleSuffix(file.name))) {
           this.$message.error('允许上传文件类型为' + this.fileType.join('、'))
@@ -140,6 +139,7 @@ export default {
         }
       }
       if (this.fileSize) {
+        console.log(this.fileSize)
         console.log(file.size / 1024)
         if (file.size / 1024 > this.fileSize) {
           this.$message.error('允许上传文件大小最大为' + this.fileSize + 'k')
