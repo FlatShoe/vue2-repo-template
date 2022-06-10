@@ -31,26 +31,27 @@
             <slot :row="scope.row" :name="column.name.replace('__slot:', '')"></slot>
           </template>
         </el-table-column>
-        <el-table-column
-          v-else
-          :key="column.key ? column.key + index : index"
-          :type="column.type"
-          :fixed="column.fixed"
-          :prop="column.name"
-          :label="column.label"
-          :width="column.width"
-          :align="column.align || columnAlign"
-          :sortable="column.sortable"
-          :formatter="
-            column.type === 'date' ||
-            column.type === 'dateTime' ||
-            column.type === 'datetime' ||
-            column.type === 'dateTimeAll'
-              ? strftime
-              : null
-          "
-        >
-        </el-table-column>
+        <template v-else>
+          <el-table-column
+            :key="column.key ? column.key + index : index"
+            :type="column.type"
+            :fixed="column.fixed"
+            :prop="column.name"
+            :label="column.label"
+            :width="column.width"
+            :align="column.align || columnAlign"
+            :sortable="column.sortable"
+            :formatter="
+              column.type === 'date' ||
+              column.type === 'dateTime' ||
+              column.type === 'datetime' ||
+              column.type === 'dateTimeAll'
+                ? strftime
+                : null
+            "
+          >
+          </el-table-column>
+        </template>
       </template>
     </el-table>
     <slot v-else></slot>
