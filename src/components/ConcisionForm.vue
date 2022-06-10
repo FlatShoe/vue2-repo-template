@@ -37,14 +37,15 @@
       <el-form-item v-else-if="item.slot" :label="item.label" :key="item.name" :prop="item.name">
         <slot :name="item.name" :row="{key: item.name}"></slot>
       </el-form-item>
-      <components
-        v-else
-        :key="item.name"
-        :is="`${item.inputType}-input`"
-        :value="formData[item.name]"
-        v-bind="item"
-        @input="handleInput(item.name, $event)"
-      ></components>
+      <template v-else>
+        <components
+          :key="item.name"
+          :is="`${item.inputType}-input`"
+          :value="formData[item.name]"
+          v-bind="item"
+          @input="handleInput(item.name, $event)"
+        ></components>
+      </template>
     </template>
   </el-form>
 </template>

@@ -15,14 +15,15 @@
         >
           {{ props ? item[props.label] : item }}
         </el-radio>
-        <el-radio-button
-          v-else
-          :key="props ? item[props.value] : index"
-          :label="props ? item[props.value] : item"
-          :disabled="item.disabled"
-        >
-          {{ props ? item[props.label] : item }}
-        </el-radio-button>
+        <template v-else>
+          <el-radio-button
+            :key="props ? item[props.value] : index"
+            :label="props ? item[props.value] : item"
+            :disabled="item.disabled"
+          >
+            {{ props ? item[props.label] : item }}
+          </el-radio-button>
+        </template>
       </template>
     </el-radio-group>
   </el-form-item>

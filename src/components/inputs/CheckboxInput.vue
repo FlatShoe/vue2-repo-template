@@ -15,14 +15,15 @@
         >
           {{ props ? item[props.label] : item }}
         </el-checkbox>
-        <el-checkbox-button
-          v-else
-          :key="props ? item[props.value] : index"
-          :label="props ? item[props.value] : item"
-          :disabled="item.disabled"
-        >
-          {{ props ? item[props.label] : item }}
-        </el-checkbox-button>
+        <template v-else>
+          <el-checkbox-button
+            :key="props ? item[props.value] : index"
+            :label="props ? item[props.value] : item"
+            :disabled="item.disabled"
+          >
+            {{ props ? item[props.label] : item }}
+          </el-checkbox-button>
+        </template>
       </template>
     </el-checkbox-group>
   </el-form-item>
