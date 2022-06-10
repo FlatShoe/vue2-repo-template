@@ -66,6 +66,7 @@ module.exports = {
     'operator-linebreak': 0,
     'no-unused-expressions': 0,
     'class-methods-use-this': 0,
-    'no-continue': 0
+    'no-continue': 0,
+    'no-useless-escape': 0
   }
 }

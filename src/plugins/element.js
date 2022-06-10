@@ -37,7 +37,11 @@ import {
   Avatar,
   Tabs,
   TabPane,
-  Image
+  Image,
+  Upload,
+  Message,
+  MessageBox,
+  Notification
 } from 'element-ui'
 
 Vue.use(Menu)
@@ -77,3 +81,11 @@ Vue.use(Avatar)
 Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(Image)
+Vue.use(Upload)
+
+Vue.prototype.$message = Message
+Vue.prototype.$notify = Notification
+
+const {confirm, alert} = MessageBox
+Vue.prototype.$confirm = confirm
+Vue.prototype.$alert = alert

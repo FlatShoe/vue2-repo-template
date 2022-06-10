@@ -86,14 +86,30 @@
         </div>
       </el-col>
     </el-row>
+    <!-- <upload-file
+      :multiple="true"
+      avatar="http://61.157.13.136:30332/assets/custom-active.94f37fde.png"
+      @on-success="handleSuccess"
+    /> -->
+    <concision-form :formSchema="formSchema">
+      <template slot="age" slot-scope="{row}">123123</template>
+    </concision-form>
   </div>
 </template>
 
 <script>
+import UploadFile from '@/components/upload/UploadFile.vue'
+import ConcisionForm from '@/components/ConcisionForm'
+const formSchema = [{label: '姓名', name: 'age', slot: 'age'}]
 export default {
   name: 'ChartsView',
+  components: {
+    UploadFile,
+    ConcisionForm
+  },
   data() {
     return {
+      formSchema,
       barLoading: false,
       barOption: {},
       pieLoading: false,
@@ -171,6 +187,9 @@ export default {
         }
         this.pieLoading = false
       }, 1000)
+    },
+    handleSuccess(url) {
+      console.log(url)
     }
   },
   mounted() {
