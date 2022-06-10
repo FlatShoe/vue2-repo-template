@@ -79,7 +79,7 @@ export default {
     fileType: {
       type: Array,
       default() {
-        return [] // [.png, .jpg, ...]
+        return [] // ['png', 'jpg', ...]
       }
     },
     // 文件大小限制
@@ -133,7 +133,7 @@ export default {
     },
     beforeUpload(file) {
       if (this.fileType.length) {
-        if (this.fileType.include(getFIleSuffix(file.name))) {
+        if (!this.fileType.includes(getFIleSuffix(file.name))) {
           this.$message.error('允许上传文件类型为' + this.fileType.join('、'))
           return false
         }
