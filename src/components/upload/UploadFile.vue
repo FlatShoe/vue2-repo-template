@@ -139,8 +139,6 @@ export default {
         }
       }
       if (this.fileSize) {
-        console.log(this.fileSize)
-        console.log(file.size / 1024)
         if (file.size / 1024 > this.fileSize) {
           this.$message.error('允许上传文件大小最大为' + this.fileSize + 'k')
           return false
