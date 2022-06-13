@@ -28,7 +28,7 @@
 <script>
 import {mapGetters} from 'vuex'
 import {getUploadURL} from '@/modules/utils'
-import {getResourceName, getFIleSuffix} from '@/utils/general'
+import {getFIleSuffix} from '@/utils/general'
 export default {
   name: 'UploadImage',
   props: {
