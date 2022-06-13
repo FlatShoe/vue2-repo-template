@@ -4,7 +4,7 @@
 -->
 <template>
   <div class="charts-view">
-    <el-row :gutter="20">
+    <!-- <el-row :gutter="20">
       <el-col :span="24">
         <div class="cheart-view-item">
           <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
@@ -85,22 +85,25 @@
           <chart height="100%" width="100%" :loading="pieLoading" :option="pieOption" />
         </div>
       </el-col>
-    </el-row>
+    </el-row> -->
     <upload-file
       :multiple="true"
       avatar="http://61.157.13.136:30332/assets/custom-active.94f37fde.png"
       @on-success="handleSuccess"
     />
+    <upload-image />
   </div>
 </template>
 
 <script>
 import UploadFile from '@/components/upload/UploadFile.vue'
+import UploadImage from '@/components/upload/UploadImage.vue'
 const formSchema = [{label: '姓名', name: 'age', slot: 'age'}]
 export default {
   name: 'ChartsView',
   components: {
-    UploadFile
+    UploadFile,
+    UploadImage
   },
   data() {
     return {
