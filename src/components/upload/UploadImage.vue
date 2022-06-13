@@ -13,6 +13,7 @@
       }"
       :show-file-list="false"
       :action="action"
+      :headers="headers"
       :accept="accept"
       :on-success="handleSuccess"
       :before-upload="handleBeforeUpload"
