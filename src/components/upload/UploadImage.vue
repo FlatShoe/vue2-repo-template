@@ -105,6 +105,10 @@ export default {
         }
       }
       this.loading = true
+    },
+    clearFiles() {
+      this.$refs.uploadImageRef.clearFiles()
+      this.imageUrl = ''
     }
   },
   watch: {

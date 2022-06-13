@@ -148,6 +148,7 @@ export default {
     },
     clearFiles() {
       this.$refs.uploadFileRef.clearFiles()
+      this.fileList = []
     }
   },
   watch: {
