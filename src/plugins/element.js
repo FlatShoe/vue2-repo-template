@@ -41,7 +41,8 @@ import {
   Upload,
   Message,
   MessageBox,
-  Notification
+  Notification,
+  Tree
 } from 'element-ui'
 
 Vue.use(Menu)
@@ -82,6 +83,7 @@ Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(Image)
 Vue.use(Upload)
+Vue.use(Tree)
 
 Vue.prototype.$message = Message
 Vue.prototype.$notify = Notification

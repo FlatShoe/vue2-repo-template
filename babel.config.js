@@ -8,5 +8,6 @@ module.exports = {
         corejs: '2.6.5'
       }
     ]
-  ]
+  ],
+  plugins: ['transform-vue-jsx']
 }

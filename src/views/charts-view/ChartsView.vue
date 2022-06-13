@@ -3,7 +3,7 @@
 * @Date
 -->
 <template>
-  <div class="charts-view">
+  <div class="charts-view page">
     <!-- <el-row :gutter="20">
       <el-col :span="24">
         <div class="cheart-view-item">
@@ -86,24 +86,36 @@
         </div>
       </el-col>
     </el-row> -->
-    <upload-file
+    <!-- <upload-file
       :multiple="true"
       avatar="http://61.157.13.136:30332/assets/custom-active.94f37fde.png"
       @on-success="handleSuccess"
     />
-    <upload-image />
+    <upload-image /> -->
+    <div class="tree-container">
+      <flexo-tree
+        showCheckbox
+        checkStrictly
+        :treeData="treeData"
+        :defaultProps="{children: 'children', label: 'label'}"
+        @check="check"
+        @node-click="nodeClick"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import UploadFile from '@/components/upload/UploadFile.vue'
 import UploadImage from '@/components/upload/UploadImage.vue'
+import FlexoTree from '@/components/trees/FlexoTree.vue'
 const formSchema = [{label: '姓名', name: 'age', slot: 'age'}]
 export default {
   name: 'ChartsView',
   components: {
     UploadFile,
-    UploadImage
+    UploadImage,
+    FlexoTree
   },
   data() {
     return {
@@ -111,7 +123,85 @@ export default {
       barLoading: false,
       barOption: {},
       pieLoading: false,
-      pieOption: {}
+      pieOption: {},
+      treeData: [
+        {
+          id: 1,
+          label: '一级 1',
+          children: [
+            {
+              id: 49,
+              label: '二级 1-1',
+              children: [
+                {
+                  id: 9,
+                  label: '三级 1-1-1'
+                },
+                {
+                  id: 10,
+                  label: '三级 1-1-2'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          label: '一级 2',
+          children: [
+            {
+              id: 5,
+              label: '二级 2-1'
+            },
+            {
+              id: 6,
+              label: '二级 2-2'
+            }
+          ]
+        },
+        {
+          id: 3,
+          label: '一级 3',
+          children: [
+            {
+              id: 7,
+              label: '二级 3-1'
+            },
+            {
+              id: 8,
+              label: '二级 3-2'
+            }
+          ]
+        },
+        {
+          id: 4,
+          label: '一级 3',
+          children: [
+            {
+              id: 17,
+              label: '二级 3-1'
+            },
+            {
+              id: 28,
+              label: '二级 3-2'
+            }
+          ]
+        },
+        {
+          id: 40,
+          label: '一级 3',
+          children: [
+            {
+              id: 47,
+              label: '二级 3-1'
+            },
+            {
+              id: 48,
+              label: '二级 3-2'
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {
@@ -188,6 +278,12 @@ export default {
     },
     handleSuccess(url) {
       console.log(url)
+    },
+    check(node) {
+      console.log(node)
+    },
+    nodeClick(nodeData) {
+      console.log(nodeData)
     }
   },
   mounted() {
@@ -199,8 +295,12 @@ export default {
 
 <style lang="scss" scoped>
 .charts-view {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  .tree-container {
+    width: 500px;
+    flex: 1;
+    overflow-y: auto;
+  }
   .cheart-view-item {
     width: 100%;
     height: 500px;
