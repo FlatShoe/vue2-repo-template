@@ -15,6 +15,7 @@
       :border="border"
       :show-summary="showSummary"
       :summary-method="summaryMethod"
+      @row-click="handleRowClick"
     >
       <template v-for="(column, index) in columns">
         <el-table-column
@@ -157,6 +158,10 @@ export default {
     total: {
       type: Number,
       default: 0
+    },
+    rowClick: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -173,6 +178,11 @@ export default {
       }
       if (!dateTypes[column.type]) return cellValue
       return dayjs(cellValue).format(dateTypes[column.type])
+    },
+    handleRowClick(row) {
+      if (this.rowClick) {
+        this.$emit('row-click', row)
+      }
     }
   }
 }
