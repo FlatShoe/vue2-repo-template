@@ -100,6 +100,7 @@
         :defaultProps="{children: 'children', label: 'label'}"
         @check="check"
         @node-click="nodeClick"
+        :render="renderFun"
       />
     </div>
   </div>
@@ -205,6 +206,17 @@ export default {
     }
   },
   methods: {
+    renderFun(h, {node, data}) {
+      const {label} = data
+      return (
+        <div
+          class="custom-tree-node"
+          on-click={this.nodeClick.bind(this, {node, data, type: 'click'})}
+        >
+          <span>{label}abc</span>
+        </div>
+      )
+    },
     getBarData() {
       this.barLoading = true
       setTimeout(() => {

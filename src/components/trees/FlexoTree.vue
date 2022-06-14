@@ -103,13 +103,12 @@ export default {
     render: {
       type: Function,
       default(h, {node, data}) {
-        const {label} = data
         return (
           <div
             class="custom-tree-node"
             on-click={this.nodeClick.bind(this, {node, data, type: 'click'})}
           >
-            <span>{label}</span>
+            <span>{data[this.defaultProps.label]}</span>
           </div>
         )
       }
