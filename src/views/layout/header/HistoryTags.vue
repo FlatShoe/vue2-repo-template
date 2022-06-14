@@ -5,7 +5,7 @@
 <template>
   <div class="history-tags">
     <el-tabs type="card" :closable="historyTags.length > 1" v-model="tagValue" @edit="handleEdit">
-      <el-tab-pane :key="item.name" v-for="(item, index) in historyTags" :name="item.fullPath">
+      <el-tab-pane :key="item.fullPath" v-for="(item, index) in historyTags" :name="item.fullPath">
         <span slot="label" @contextmenu.prevent="handleOpenMenu($event, item.fullPath, index)">
           <router-link class="tag-router" :to="{path: item.fullPath}">
             <i class="route-line route-left-line" v-if="index !== 0"></i>
@@ -120,11 +120,17 @@ export default {
     generateTag(route) {
       let title = ''
       const {fullPath, meta, name, params, path, query} = route
-      if (!route.meta) {
-        const pathArr = route.path.split('/')
+      const pathArr = route.path.split('/')
+      if (!meta) {
         title = pathArr[pathArr.length - 1]
       } else {
-        title = meta.title
+        if (meta.title) {
+          title = meta.title
+        } else if (meta.subTitle) {
+          title = meta.subTitle
+        } else {
+          title = pathArr[pathArr.length - 1]
+        }
       }
       return {
         name,
