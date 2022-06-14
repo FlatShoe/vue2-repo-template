@@ -26,15 +26,6 @@
 </template>
 
 <script>
-function fn(h, {node, data}) {
-  const {label} = node
-  return (
-    <div class="custom-tree-node" on-click={this.nodeClick.bind(this, {node, data, type: 'click'})}>
-      <span>{label}</span>
-    </div>
-  )
-}
-
 import _ from 'lodash'
 export default {
   name: 'FlexoTree',
