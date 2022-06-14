@@ -283,7 +283,7 @@ export default {
       console.log(node)
     },
     nodeClick(nodeData) {
-      console.log(nodeData)
+      console.log(nodeData, 'chart')
     }
   },
   mounted() {

@@ -18,14 +18,23 @@
       :expand-on-click-node="expandOnClickNode"
       :highlight-current="highlightCurrent"
       :default-checked-keys="defaultCheckedKeys"
+      :render-content="renderContent"
       @check="check"
-      @node-click="nodeClick"
     ></el-tree>
     <span class="tree-empty" v-else>{{ emptyText }}</span>
   </div>
 </template>
 
 <script>
+function fn(h, {node, data}) {
+  const {label} = node
+  return (
+    <div class="custom-tree-node" on-click={this.nodeClick.bind(this, {node, data, type: 'click'})}>
+      <span>{label}</span>
+    </div>
+  )
+}
+
 import _ from 'lodash'
 export default {
   name: 'FlexoTree',
@@ -89,6 +98,21 @@ export default {
     highlightCurrent: {
       type: Boolean,
       default: true
+    },
+    // 函数模版
+    render: {
+      type: Function,
+      default(h, {node, data}) {
+        const {label} = data
+        return (
+          <div
+            class="custom-tree-node"
+            on-click={this.nodeClick.bind(this, {node, data, type: 'click'})}
+          >
+            <span>{label}</span>
+          </div>
+        )
+      }
     }
   },
   data() {
@@ -126,10 +150,9 @@ export default {
     /*
      * @Description 点击当前节点
      * @param {Object} node 当前节点相关信息 data 当前节点相关数据 type 操作类型
-     * @param {Object} e 事件参数对象
      */
-    nodeClick(node, data) {
-      this.$emit('node-click', {node, data})
+    nodeClick({node, data, type}) {
+      this.$emit('node-click', {node, data, type})
     },
     /*
      * @Description 获取已被选择的节点 提供外部使用
@@ -145,6 +168,16 @@ export default {
       this.$nextTick(() => {
         this.$refs.treeRef.setCheckedKeys([])
         this.$refs.treeRef.setCheckedNodes([])
+      })
+    },
+    /**
+     * 通过render函数渲染内容
+     */
+    renderContent(h, {node, data, store}) {
+      return this.render.call(this, h, {
+        node,
+        data,
+        store
       })
     }
   },
